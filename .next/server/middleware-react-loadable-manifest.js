@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST={"index.jsx -> ../src/components/PortfolioIsotope":{"id":"index.jsx -> ../src/components/PortfolioIsotope","files":["static/chunks/src_components_PortfolioIsotope_js.js"]}}
