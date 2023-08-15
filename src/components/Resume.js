@@ -4,15 +4,15 @@ const educationData = [
   {
     id: 1,
     title: "Information System",
-    academy: "Universitas Bina Sarana Informatika",
+    academy: "University Bina Sarana Informatika",
     dec: "Completed D3 program, specializing in web development using various programming languages.",
     startYear: "2019",
-    endYear: "2022", 
+    endYear: "2022",
   },
   {
     id: 2,
     title: "Information System",
-    academy: "Universitas Nusa Mandiri",
+    academy: "University Nusa Mandiri",
     dec: "Continuing with S1 program to enhance qualifications and capabilities in information technology.",
     startYear: "2022",
     endYear: "Ongoing",

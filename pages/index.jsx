@@ -103,7 +103,7 @@ const Index = () => {
                 <div className="bts">
                   <a
                     target="_blank"
-                    href="https://drive.google.com/file/d/1LFgII1rFAnJh3vbU11FerTZ56g3itHGo/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1HhtbSuMooeV3_W-N9Bjp9M1_Aepq2Xop/view?usp=sharing"
                     className="btn"
                   >
                     <span>Download CV</span>
@@ -434,7 +434,8 @@ const Index = () => {
                         <p>
                           Specializing in Laravel, I've used it in 90% of my
                           e-commerce and web projects, providing robust,
-                          scalable solutions that ensure efficiency and adaptability to various business needs.
+                          scalable solutions that ensure efficiency and
+                          adaptability to various business needs.
                         </p>
                       </div>
                     </div>
