@@ -119,6 +119,7 @@ const Index = () => {
                 data-animate="active"
               >
                 <img
+                  loading="lazy"
                   decoding="async"
                   src="assets/images/profile-azmi.png"
                   alt="<b>Moch Azmi</b> Iskandar"
@@ -658,6 +659,7 @@ const Index = () => {
                     <Link legacyBehavior href="/blog-single">
                       <a>
                         <img
+                          loading="lazy"
                           decoding="async"
                           src="assets/images/single7.jpg"
                           alt="The Main Thing For The Designer"
@@ -698,6 +700,7 @@ const Index = () => {
                     <Link legacyBehavior href="/blog-single">
                       <a>
                         <img
+                          loading="lazy"
                           decoding="async"
                           src="assets/images/blog-4-scaled-1.jpg"
                           alt="Follow Your Own Design Process"
@@ -738,6 +741,7 @@ const Index = () => {
                     <Link legacyBehavior href="/blog-single">
                       <a>
                         <img
+                          loading="lazy"
                           decoding="async"
                           src="assets/images/blog-2.jpg"
                           alt="Usability Secrets to Create Better Interfaces"

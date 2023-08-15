@@ -31,12 +31,12 @@ const WorkSingleISotope = () => {
               >
                 <div className="img">
                   <a
-                    href="assets/images/work5.jpeg"
+                    href="/assets/images/work5.jpeg"
                     className="has-popup-image"
                   >
                     <img
                       decoding="async"
-                      src="assets/images/work5.jpeg"
+                      src="/assets/images/work5.jpeg"
                       alt="Item 1"
                       loading="lazy"
                     />
@@ -52,10 +52,10 @@ const WorkSingleISotope = () => {
                 data-animate="active"
               >
                 <div className="img">
-                  <a href="assets/images/blog8.jpg" className="has-popup-image">
+                  <a href="/assets/images/blog8.jpg" className="has-popup-image">
                     <img
                       decoding="async"
-                      src="assets/images/blog8.jpg"
+                      src="/assets/images/blog8.jpg"
                       alt="Item 2"
                       loading="lazy"
                     />
@@ -71,10 +71,10 @@ const WorkSingleISotope = () => {
                 data-animate="active"
               >
                 <div className="img">
-                  <a href="assets/images/blog6.jpg" className="has-popup-image">
+                  <a href="/assets/images/blog6.jpg" className="has-popup-image">
                     <img
                       decoding="async"
-                      src="assets/images/blog6.jpg"
+                      src="/assets/images/blog6.jpg"
                       alt="Item 3"
                       loading="lazy"
                     />

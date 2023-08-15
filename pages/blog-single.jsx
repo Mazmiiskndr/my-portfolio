@@ -108,12 +108,20 @@ const BlogSingle = () => {
                   <ul className="gallery gallery-columns-2">
                     <li className="gallery-item">
                       <figure>
-                        <img src="assets/images/blog8.jpg" alt="" />
+                        <img
+                          src="assets/images/blog8.jpg"
+                          alt=""
+                          loading="lazy"
+                        />
                       </figure>
                     </li>
                     <li className="gallery-item">
                       <figure>
-                        <img src="assets/images/blog6.jpg" alt="" />
+                        <img
+                          src="assets/images/blog6.jpg"
+                          alt=""
+                          loading="lazy"
+                        />
                       </figure>
                     </li>
                   </ul>
@@ -174,6 +182,7 @@ const BlogSingle = () => {
                           src="assets/images/avatar.png"
                           className="avatar"
                           alt=""
+                          loading="lazy"
                         />
                         <div className="comment-box__body">
                           <div className="content-caption post-content description">
@@ -203,6 +212,7 @@ const BlogSingle = () => {
                           src="assets/images/avatar.png"
                           className="avatar"
                           alt=""
+                          loading="lazy"
                         />
                         <div className="comment-box__body">
                           <div className="content-caption post-content description">

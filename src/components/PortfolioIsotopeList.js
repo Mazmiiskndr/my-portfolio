@@ -92,6 +92,7 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                   <Link legacyBehavior href="/work-single">
                     <a>
                       <img
+                        loading="lazy"
                         decoding="async"
                         src="assets/images/work4.jpeg"
                         alt="Zorro"
@@ -136,6 +137,7 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                   <Link legacyBehavior href="/work-single">
                     <a>
                       <img
+                        loading="lazy"
                         decoding="async"
                         src="assets/images/work2.jpeg"
                         alt="Gooir"
@@ -180,6 +182,7 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                   <Link legacyBehavior href="/work-single">
                     <a>
                       <img
+                        loading="lazy"
                         decoding="async"
                         src="assets/images/work7.jpg"
                         alt="Explore"
@@ -224,6 +227,7 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                   <Link legacyBehavior href="/work-single">
                     <a>
                       <img
+                        loading="lazy"
                         decoding="async"
                         src="assets/images/work1.jpeg"
                         alt="Mozar"
@@ -268,6 +272,7 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                   <Link legacyBehavior href="/work-single">
                     <a>
                       <img
+                        loading="lazy"
                         decoding="async"
                         src="assets/images/single8.jpg"
                         alt="Stay Fit"
@@ -312,6 +317,7 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                   <Link legacyBehavior href="/work-single">
                     <a>
                       <img
+                        loading="lazy"
                         decoding="async"
                         src="assets/images/single6.jpg"
                         alt="Kana"
