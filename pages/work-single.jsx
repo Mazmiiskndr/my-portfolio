@@ -78,12 +78,11 @@ const WorkSingle = () => {
         {/* Image */}
         <div className="m-image-large">
           <div className="image">
-            <div
+            <img
               className="img js-parallax"
-              style={{
-                backgroundImage:
-                  "url(https://luique.bslthemes.com/wp-content/uploads/2021/11/single4.jpg)",
-              }}
+              src="https://luique.bslthemes.com/wp-content/uploads/2021/11/single4.jpg"
+              alt="Parallax"
+              loading="lazy"
             />
           </div>
         </div>
@@ -166,9 +165,11 @@ const WorkSingle = () => {
       {/* Section - Video */}
       <div className="section section-inner m-video-large">
         <div className={`video ${videoToggle ? "active" : ""}`}>
-          <div
+          <img
             className="img js-parallax"
-            style={{ backgroundImage: "url(assets/images/blog9.jpg)" }}
+            src="assets/images/blog9.jpg"
+            alt="Parallax 2"
+            loading="lazy"
           />
           <iframe
             className="js-video-iframe"

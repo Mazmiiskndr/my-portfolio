@@ -119,11 +119,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
                   <a className="lnk">See project</a>
                 </Link>
               </div>
-              <div
+              <img
                 className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
+                src="assets/images/pat-2.png"
+                alt="Pat 2"
+                loading="lazy"
               />
             </div>
           </div>
@@ -164,11 +164,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
                   <a className="lnk">See project</a>
                 </Link>
               </div>
-              <div
+              <img
                 className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
+                src="assets/images/pat-2.png"
+                alt="Pat 2"
+                loading="lazy"
               />
             </div>
           </div>
@@ -211,11 +211,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
                   <a className="lnk">See project</a>
                 </Link>
               </div>
-              <div
+              <img
                 className="bg-img"
-                style={{
-                  backgroundImage: "url(/assets/images/pat-2.png)",
-                }}
+                src="assets/images/pat-2.png"
+                alt="Pat 2"
+                loading="lazy"
               />
             </div>
           </div>
@@ -256,11 +256,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
                   <a className="lnk">See project</a>
                 </Link>
               </div>
-              <div
+              <img
                 className="bg-img"
-                style={{
-                  backgroundImage: "url(/assets/images/pat-2.png)",
-                }}
+                src="assets/images/pat-2.png"
+                alt="Pat 2"
+                loading="lazy"
               />
             </div>
           </div>
@@ -301,11 +301,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
                   <a className="lnk">See project</a>
                 </Link>
               </div>
-              <div
+              <img
                 className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
+                src="assets/images/pat-2.png"
+                alt="Pat 2"
+                loading="lazy"
               />
             </div>
           </div>
@@ -346,11 +346,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
                   <a className="lnk">See project</a>
                 </Link>
               </div>
-              <div
+              <img
                 className="bg-img"
-                style={{
-                  backgroundImage: "url(assets/images/pat-2.png)",
-                }}
+                src="assets/images/pat-2.png"
+                alt="Pat 2"
+                loading="lazy"
               />
             </div>
           </div>

@@ -40,10 +40,12 @@ const BlogSingle = () => {
           </div>
         </div>
         <div className="image">
-          <div
+          <img
             className="img scrolla-element-anim-1 scroll-animate"
+            src="assets/images/single7.jpg"
+            alt="Single 7"
             data-animate="active"
-            style={{ backgroundImage: "url(assets/images/single7.jpg)" }}
+            loading="lazy"
           />
         </div>
       </div>

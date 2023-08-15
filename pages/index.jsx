@@ -124,23 +124,23 @@ const Index = () => {
                   alt="<b>Moch Azmi</b> Iskandar"
                 />
                 <span className="circle circle-1" />
-                <span
+                <img
                   className="circle img-1"
-                  style={{
-                    backgroundImage: "url(assets/images/pat-1.png)",
-                  }}
+                  src="assets/images/pat-1.png"
+                  alt="Pat 1"
+                  loading="lazy"
                 />
-                <span
+                <img
                   className="circle img-2"
-                  style={{
-                    backgroundImage: "url(assets/images/pat-2.png)",
-                  }}
+                  src="assets/images/pat-2.png"
+                  alt="Pat 2"
+                  loading="lazy"
                 />
-                <span
+                <img
                   className="circle img-3"
-                  style={{
-                    backgroundImage: "url(assets/images/pat-2.png)",
-                  }}
+                  src="assets/images/pat-2.png"
+                  alt="Pat 3"
+                  loading="lazy"
                 />
                 <div className="info-list">
                   <ul>
@@ -226,11 +226,11 @@ const Index = () => {
                     {" "}
                     See Pricing{" "}
                   </a>
-                  <div
+                  <img
                     className="image"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
+                    src="assets/images/pat-2.png"
+                    alt="PAT 2"
+                    loading="lazy"
                   />
                 </div>
               </SwiperSlide>
@@ -256,11 +256,11 @@ const Index = () => {
                     {" "}
                     See Pricing{" "}
                   </a>
-                  <div
+                  <img
                     className="image"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
+                    src="assets/images/pat-2.png"
+                    alt="Pat 2"
+                    loading="lazy"
                   />
                 </div>
               </SwiperSlide>
@@ -285,11 +285,11 @@ const Index = () => {
                     {" "}
                     See Pricing{" "}
                   </a>
-                  <div
+                  <img
                     className="image"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
+                    src="assets/images/pat-2.png"
+                    alt="Pat 2"
+                    loading="lazy"
                   />
                 </div>
               </SwiperSlide>
@@ -315,11 +315,11 @@ const Index = () => {
                     {" "}
                     See Pricing{" "}
                   </a>
-                  <div
+                  <img
                     className="image"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
+                    src="assets/images/pat-2.png"
+                    alt="Pat 2"
+                    loading="lazy"
                   />
                 </div>
               </SwiperSlide>
@@ -346,11 +346,11 @@ const Index = () => {
                     {" "}
                     See Pricing{" "}
                   </a>
-                  <div
+                  <img
                     className="image"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-2.png)",
-                    }}
+                    src="assets/images/pat-2.png"
+                    alt="Pat 2"
+                    loading="lazy"
                   />
                 </div>
               </SwiperSlide>
@@ -884,11 +884,11 @@ const Index = () => {
                   className="contacts-form scrolla-element-anim-1 scroll-animate"
                   data-animate="active"
                 >
-                  <div
+                  <img
                     className="bg-img"
-                    style={{
-                      backgroundImage: "url(assets/images/pat-1.png)",
-                    }}
+                    src="assets/images/pat-1.png"
+                    alt="Bg Image Pat 2"
+                    loading="lazy"
                   />
                   <div className="contacts-form">
                     <form onSubmit={(e) => e.preventDefault()} id="cform">
