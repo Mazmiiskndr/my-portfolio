@@ -181,7 +181,7 @@ const PortfolioIsotope = ({ noViewMore }) => {
                     <a>
                       <img
                         decoding="async"
-                        src="assets/images/work7.jpg"
+                        src="assets/images/megalos-split.jpg"
                         alt="Explore"
                       />
                       <span className="overlay" />
@@ -193,13 +193,15 @@ const PortfolioIsotope = ({ noViewMore }) => {
                 <span className="category"> Development, UI UX Design </span>
                 <h5 className="name">
                   <Link legacyBehavior href="/work-single">
-                    <a>Explore</a>
+                    <a>Megalos - Hotspot Management System</a>
                   </Link>
                 </h5>
                 <div className="text">
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore.
+                    Megalos is developed using the Laravel 9 tech stack,
+                    Livewire version 2, and implements the repository pattern
+                    paradigm. The project is also integrated with Mikrotik API
+                    and freeRadius.
                   </p>
                 </div>
                 <Link legacyBehavior href="/work-single">
