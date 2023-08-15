@@ -7,7 +7,7 @@ const educationData = [
     academy: "Universitas Bina Sarana Informatika",
     dec: "Completed D3 program, specializing in web development using various programming languages.",
     startYear: "2019",
-    endYear: "2022",
+    endYear: "2022", 
   },
   {
     id: 2,
