@@ -132,7 +132,7 @@ export const linkClick = () => {
 };
 
 export const jarallaxAnimation = () => {
-  let { jarallax, jarallaxVideo } = require("jarallax");
+  let { jarallax } = require("jarallax");
   jarallax(document.querySelectorAll(`.js-parallax`), {
     speed: 0.65,
     type: "scroll",

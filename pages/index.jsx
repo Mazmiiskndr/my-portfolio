@@ -5,7 +5,6 @@ import Resume from "../src/components/Resume";
 import Layout from "../src/layouts/Layout";
 import {
   servicesSliderProps,
-  testimonialsSliderProps,
 } from "../src/sliderProps";
 const PortfolioIsotope = dynamic(
   () => import("../src/components/PortfolioIsotope"),

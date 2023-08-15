@@ -19,13 +19,11 @@ const Layout = ({ children, pageClassName }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.Splitting = require("splitting");
+      Splitting();
+      jarallaxAnimation();
+      document.querySelector("body").className = pageClassName;
     }
-    Splitting();
-    jarallaxAnimation();
-    document.querySelector("body").className = pageClassName
-      ? pageClassName
-      : "";
-  });
+  }, [pageClassName]);
 
   return (
     <Fragment>
