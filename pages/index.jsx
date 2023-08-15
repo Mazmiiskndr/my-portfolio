@@ -519,14 +519,14 @@ const Index = () => {
                     data-animate="active"
                   >
                     <h6 className="name">
-                      <span> CodeIgniter </span>
+                      <span> Tailwind CSS </span>
                     </h6>
                     <div className="text">
                       <div>
                         <p>
-                          CodeIgniter With 80% proficiency in CodeIgniter, I've
-                          developed streamlined and high-performing applications
-                          in both e-commerce and tax management.
+                          With 80% proficiency in Tailwind CSS, I've created
+                          responsive and modern designs for various websites,
+                          making them both visually appealing and user-friendly.
                         </p>
                       </div>
                     </div>
