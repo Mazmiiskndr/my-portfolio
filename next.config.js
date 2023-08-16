@@ -8,6 +8,8 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "@layouts": path.resolve(__dirname, "src/layouts/"),
+      "@config": path.resolve(__dirname, "src/config/"),
+      "@hooks": path.resolve(__dirname, "src/hooks/"),
       "@components": path.resolve(__dirname, "src/components/"),
     };
     return config;
