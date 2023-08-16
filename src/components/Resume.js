@@ -98,7 +98,7 @@ export default function Resume() {
                           </div>
                           <div className="text">
                             <div>
-                              <p>{education.dec}</p>
+                              <p>{education.description}</p>
                             </div>
                           </div>
                         </div>
