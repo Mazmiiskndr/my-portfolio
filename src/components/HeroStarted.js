@@ -45,8 +45,8 @@ export default function HeroStarted() {
                   data-animate="active"
                 >
                   <span>
-                    <b>{name.split(" ")[0]}</b>{" "}
-                    {name.split(" ").slice(1).join(" ")}
+                    <b>{name.split(" ").slice(0, 2).join(" ")}</b>{" "}
+                    {name.split(" ").slice(2).join(" ")}
                   </span>
                 </h1>
                 <div className="label lui-subtitle">

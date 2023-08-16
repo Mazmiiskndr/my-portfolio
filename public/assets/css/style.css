@@ -2490,7 +2490,7 @@ hr {
 }
 
 .section.hero-started .content {
-	padding-top: 40px;
+	padding-top: 60px;
 	position: relative;
 }
 
@@ -2511,7 +2511,7 @@ hr {
 	line-height: 1.2;
 	color: #FFF;
 	font-weight: 700;
-	margin: 15px 0 0 0;
+	margin: 0px 0 0 -6px;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	text-shadow: 2px 2px #000, -2px 2px #000, 2px -2px #000, -2px -2px #000, 5px 5px 0px rgba(0, 0, 0, 0.2);
@@ -2533,7 +2533,7 @@ hr {
 }
 
 .section.hero-started .description {
-	padding: 40px 0 40px 0;
+	padding: 10px 0 30px 0;
 	font-size: 18px;
 	max-width: 520px;
 }
