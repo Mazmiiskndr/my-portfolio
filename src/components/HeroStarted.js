@@ -1,4 +1,24 @@
+import { useFetchAbout } from "@hooks/useFetchAbout";
+
 export default function HeroStarted() {
+  const [aboutData, aboutLoading] = useFetchAbout();
+
+  if (aboutLoading || !aboutData) {
+    return <div>Loading...</div>;
+  }
+
+  const {
+    name,
+    position,
+    github,
+    instagram,
+    facebook,
+    email,
+    whatsapp,
+    resume,
+    description,
+  } = aboutData;
+
   return (
     <section
       className="lui-section lui-section-hero lui-gradient-top"
@@ -25,70 +45,39 @@ export default function HeroStarted() {
                   data-animate="active"
                 >
                   <span>
-                    <b>Moch Azmi</b> Iskandar{" "}
+                    <b>{name.split(" ")[0]}</b>{" "}
+                    {name.split(" ").slice(1).join(" ")}
                   </span>
                 </h1>
                 <div className="label lui-subtitle">
                   {" "}
-                  I am <strong>Full Stack Developer</strong>
+                  I am <strong>{position}</strong>
                 </div>
               </div>
               <div className="description">
                 <div>
-                  <p>
-                    I'm a 22-year-old Information Systems graduate with
-                    proficiency in web development (HTML, CSS, JavaScript, PHP,
-                    etc.). A finalist in the Students Competition of Innovation
-                    and Business, I have 4 years of Full Stack Development
-                    experience and 1 year of professional work. Now, I'm
-                    studying at University Nusa Mandiri to further my
-                    qualifications.
-                  </p>
+                  <p>{description}</p>
                 </div>
                 <div className="social-links">
-                  <a
-                    target="_blank"
-                    rel="nofollow"
-                    href="https://github.com/Mazmiiskndr"
-                  >
+                  <a target="_blank" rel="nofollow" href={github}>
                     <i aria-hidden="true" className="fab fa-github" />
                   </a>
-                  <a
-                    target="_blank"
-                    rel="nofollow"
-                    href="https://www.instagram.com/m.azmiiskndr"
-                  >
+                  <a target="_blank" rel="nofollow" href={instagram}>
                     <i aria-hidden="true" className="fab fa-instagram" />
                   </a>
-                  <a
-                    target="_blank"
-                    rel="nofollow"
-                    href="https://www.facebook.com/Miee.xtc/"
-                  >
+                  <a target="_blank" rel="nofollow" href={facebook}>
                     <i aria-hidden="true" className="fab fa-facebook" />
                   </a>
-                  <a
-                    target="_blank"
-                    rel="nofollow"
-                    href="mailto:azmiiskndr0@gmail.com"
-                  >
+                  <a target="_blank" rel="nofollow" href={email}>
                     <i aria-hidden="true" className="fas fa-envelope" />
                   </a>
-                  <a
-                    target="_blank"
-                    rel="nofollow"
-                    href="https://wa.me/6282118923691"
-                  >
+                  <a target="_blank" rel="nofollow" href={whatsapp}>
                     <i aria-hidden="true" className="fab fa-whatsapp" />
                   </a>
                 </div>
               </div>
               <div className="bts">
-                <a
-                  target="_blank"
-                  href="https://drive.google.com/file/d/1HhtbSuMooeV3_W-N9Bjp9M1_Aepq2Xop/view?usp=sharing"
-                  className="btn"
-                >
+                <a target="_blank" href={resume} className="btn">
                   <span>Download CV</span>
                 </a>
                 <a href="#skills-section" className="btn-lnk">
@@ -147,7 +136,7 @@ export default function HeroStarted() {
             </div>
           </div>
           <div className="lui-bgtitle">
-            <span> Full Stack Developer </span>
+            <span> {position} </span>
           </div>
         </div>
       </div>

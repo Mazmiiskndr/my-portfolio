@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "@config/api";
 
-export const useFetchResume = () => {
+export const useFetchAbout = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData(`about`)
       .then((data) => {
-        setData(data.results[0].resumes);
+        setData(data.results);
       })
       .catch(() => {
         console.error(`Error fetching about data`);
