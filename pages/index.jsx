@@ -120,7 +120,7 @@ const Index = () => {
                 <img
                   loading="lazy"
                   decoding="async"
-                  src="assets/images/profile-azmi.png"
+                  src="assets/images/profile/profile-azmi.png"
                   alt="<b>Moch Azmi</b> Iskandar"
                 />
                 <span className="circle circle-1" />

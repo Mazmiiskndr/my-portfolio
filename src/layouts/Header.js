@@ -21,22 +21,22 @@ const Header = () => {
       <header className="header">
         <div className="header__builder">
           <div className="row">
-              {/* logo */}
-            {/* <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {/* logo */}
+            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div className="logo">
                 <Link href="/" legacyBehavior>
                   <a>
                     <img
-                      width={228}
+                      width={60}
                       height={38}
-                      src="assets/images/logo2.png"
+                      src="assets/images/favicon/logo-azmi-2.png"
                       alt=""
                     />
                   </a>
                 </Link>
               </div>
-            </div> */}
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+            </div>
+            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 align-right">
               {/* switcher btn */}
               <a
                 href="#"
@@ -143,26 +143,6 @@ const Header = () => {
                                 Resume
                               </a>
                             </li>
-                            {/* <li className="menu-item">
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                href="/#testimonials-section"
-                                onClick={() => linkClick()}
-                              >
-                                Testimonials
-                              </a>
-                            </li>
-                            <li className="menu-item">
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                href="/#pricing-section"
-                                onClick={() => linkClick()}
-                              >
-                                Pricing
-                              </a>
-                            </li> */}
                             <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
