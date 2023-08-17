@@ -1,4 +1,3 @@
-import React from "react";
 import { useAboutData } from "@context/AboutDataContext";
 
 export default function ContactSection({ aboutLoading }) {
