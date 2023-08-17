@@ -1,4 +1,4 @@
-import { servicesSliderProps } from "../src/sliderProps";
+import { servicesSliderProps } from "../../src/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function ServicesSection() {
