@@ -3,21 +3,16 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Resume from "@components/Resume";
 import Layout from "@layouts/Layout";
-import {
-  servicesSliderProps,
-} from "../src/sliderProps";
+import { servicesSliderProps } from "../src/sliderProps";
 import HeroStarted from "@components/HeroStarted";
-const PortfolioIsotope = dynamic(
-  () => import("@components/PortfolioIsotope"),
-  {
-    ssr: false,
-  }
-);
+const PortfolioIsotope = dynamic(() => import("@components/PortfolioIsotope"), {
+  ssr: false,
+});
 const Index = () => {
   return (
     <Layout pageClassName={"home dark-skin"}>
       {/* Section - Hero Started */}
-      <HeroStarted/>
+      <HeroStarted />
       {/* Section - Services */}
       <section
         className="lui-section lui-gradient-bottom"

@@ -18,7 +18,7 @@ export default function HeroStarted() {
     resume,
     description,
   } = aboutData;
-  
+
   if (!name || !position || !description) {
     return <div className="text-center">Nothing data available...</div>;
   }
@@ -32,10 +32,7 @@ export default function HeroStarted() {
         {/* Hero Started */}
         <div className="lui-started v-line v-line-left">
           <div className="section hero-started">
-            <div
-              className="content"
-              data-animate="active"
-            >
+            <div className="content" data-animate="active">
               <div className="titles">
                 <div className="lui-subtitle">
                   <span>
@@ -76,7 +73,7 @@ export default function HeroStarted() {
                   <a target="_blank" rel="nofollow" href={facebook}>
                     <i aria-hidden="true" className="fab fa-facebook" />
                   </a>
-                  <a target="_blank" rel="nofollow" href={email}>
+                  <a target="_blank" rel="nofollow" href={`mailto:${email}`}>
                     <i aria-hidden="true" className="fas fa-envelope" />
                   </a>
                   <a target="_blank" rel="nofollow" href={whatsapp}>
@@ -94,10 +91,7 @@ export default function HeroStarted() {
                 </a>
               </div>
             </div>
-            <div
-              className="slide"
-              data-animate="active"
-            >
+            <div className="slide" data-animate="active">
               <img
                 loading="lazy"
                 decoding="async"
