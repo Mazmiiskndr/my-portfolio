@@ -1,11 +1,5 @@
-import { useFetchAbout } from "@hooks/useFetchAbout";
-
-export default function HeroStarted() {
-  const [aboutData, aboutLoading] = useFetchAbout();
-
-  if (aboutLoading) {
-    return <div>Loading...</div>;
-  }
+export default function HeroStarted({ aboutLoading, aboutData }) {
+  if (aboutLoading) return <div>Loading...</div>;
 
   const {
     name,
@@ -19,9 +13,8 @@ export default function HeroStarted() {
     description,
   } = aboutData;
 
-  if (!name || !position || !description) {
+  if (!name || !position || !description)
     return <div className="text-center">Nothing data available...</div>;
-  }
 
   return (
     <section

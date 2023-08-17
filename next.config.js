@@ -9,6 +9,7 @@ const nextConfig = {
       ...config.resolve.alias,
       "@layouts": path.resolve(__dirname, "src/layouts/"),
       "@config": path.resolve(__dirname, "src/config/"),
+      "@context": path.resolve(__dirname, "src/context/"),
       "@hooks": path.resolve(__dirname, "src/hooks/"),
       "@components": path.resolve(__dirname, "src/components/"),
     };
