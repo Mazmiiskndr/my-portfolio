@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { linkClick, toggleMenu } from "../utils";
+import { useAboutData } from "@context/AboutDataContext";
 
-const Header = () => {
+const Header = ({ aboutLoading }) => {
+  const aboutData = useAboutData();
+
+  const { github, instagram, facebook, email, whatsapp } = aboutData[0] || {};
+
   const [day, setDay] = useState(true);
   useEffect(() => {
     if (day) {
@@ -14,6 +19,11 @@ const Header = () => {
   }, [day]);
 
   const [pageToggle, setPageToggle] = useState(false);
+
+  if (aboutLoading) return <div>Loading...</div>;
+
+  if (!github || !instagram || !facebook || !email || !whatsapp)
+    return <div className="text-center">Nothing data available...</div>;
 
   return (
     <Fragment>
@@ -240,29 +250,27 @@ const Header = () => {
                         </div>
                         {/* social */}
                         <div className="menu-social-links">
-                          <a
-                            href="http://dribbble.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="dribbble"
-                          >
-                            <i className="fab fa-dribbble" />
+                          <a target="_blank" rel="nofollow" href={github}>
+                            <i aria-hidden="true" className="fab fa-github" />
+                          </a>
+                          <a target="_blank" rel="nofollow" href={instagram}>
+                            <i
+                              aria-hidden="true"
+                              className="fab fa-instagram"
+                            />
+                          </a>
+                          <a target="_blank" rel="nofollow" href={facebook}>
+                            <i aria-hidden="true" className="fab fa-facebook" />
                           </a>
                           <a
-                            href="http://twitter.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="twitter"
+                            target="_blank"
+                            rel="nofollow"
+                            href={`mailto:${email}`}
                           >
-                            <i className="fab fa-twitter" />
+                            <i aria-hidden="true" className="fas fa-envelope" />
                           </a>
-                          <a
-                            href="http://behance.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="behance"
-                          >
-                            <i className="fab fa-behance" />
+                          <a target="_blank" rel="nofollow" href={whatsapp}>
+                            <i aria-hidden="true" className="fab fa-whatsapp" />
                           </a>
                         </div>
                         <div className="v-line-block">
