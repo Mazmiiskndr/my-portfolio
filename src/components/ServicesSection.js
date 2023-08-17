@@ -1,6 +1,6 @@
 import { servicesSliderProps } from "../../src/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useFetchServices } from "@hooks/useFetchServices";
 
 export default function ServicesSection() {
