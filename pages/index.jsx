@@ -72,9 +72,9 @@ const Index = () => {
                       Laravel, and MySQL.{" "}
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
+                  <a href="#works-section" className="lnk">
                     {" "}
-                    See Pricing{" "}
+                    See Portfolio{" "}
                   </a>
                   <img
                     className="image"
@@ -102,9 +102,9 @@ const Index = () => {
                       </p>
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
+                  <a href="#works-section" className="lnk">
                     {" "}
-                    See Pricing{" "}
+                    See Portfolio{" "}
                   </a>
                   <img
                     className="image"
@@ -131,9 +131,9 @@ const Index = () => {
                       through dynamic and interconnected solutions.{" "}
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
+                  <a href="#works-section" className="lnk">
                     {" "}
-                    See Pricing{" "}
+                    See Portfolio{" "}
                   </a>
                   <img
                     className="image"
@@ -161,9 +161,9 @@ const Index = () => {
                       functionality of digital platforms.{" "}
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
+                  <a href="#works-section" className="lnk">
                     {" "}
-                    See Pricing{" "}
+                    See Portfolio{" "}
                   </a>
                   <img
                     className="image"
@@ -192,9 +192,9 @@ const Index = () => {
                       </p>
                     </div>
                   </div>
-                  <a href="#pricing-section" className="lnk">
+                  <a href="#works-section" className="lnk">
                     {" "}
-                    See Pricing{" "}
+                    See Portfolio{" "}
                   </a>
                   <img
                     className="image"

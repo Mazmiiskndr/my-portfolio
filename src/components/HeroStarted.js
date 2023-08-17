@@ -3,7 +3,7 @@ import { useFetchAbout } from "@hooks/useFetchAbout";
 export default function HeroStarted() {
   const [aboutData, aboutLoading] = useFetchAbout();
 
-  if (aboutLoading || !aboutData) {
+  if (aboutLoading) {
     return <div>Loading...</div>;
   }
 
@@ -18,6 +18,10 @@ export default function HeroStarted() {
     resume,
     description,
   } = aboutData;
+  
+  if (!name || !position || !description) {
+    return <div className="text-center">Nothing data available...</div>;
+  }
 
   return (
     <section
@@ -29,7 +33,7 @@ export default function HeroStarted() {
         <div className="lui-started v-line v-line-left">
           <div className="section hero-started">
             <div
-              className="content scrolla-element-anim-1 scroll-animate"
+              className="content"
               data-animate="active"
             >
               <div className="titles">
@@ -40,13 +44,17 @@ export default function HeroStarted() {
                   </span>
                 </div>
                 <h1
-                  className="title splitting-text-anim-1 scroll-animate"
+                  className="title"
                   data-splitting="chars"
                   data-animate="active"
                 >
                   <span>
-                    <b>{name.split(" ").slice(0, 2).join(" ")}</b>{" "}
-                    {name.split(" ").slice(2).join(" ")}
+                    <b>
+                      {name
+                        ? name.split(" ").slice(0, 2).join(" ")
+                        : "Moch Azmi"}
+                    </b>{" "}
+                    {name ? name.split(" ").slice(2).join(" ") : "Iskandar"}
                   </span>
                 </h1>
                 <div className="label lui-subtitle">
@@ -87,7 +95,7 @@ export default function HeroStarted() {
               </div>
             </div>
             <div
-              className="slide scrolla-element-anim-1 scroll-animate"
+              className="slide"
               data-animate="active"
             >
               <img
