@@ -1,9 +1,12 @@
 import React from "react";
+import { useAboutData } from "@context/AboutDataContext";
 
-export default function ContactSection({ aboutLoading, aboutData }) {
+export default function ContactSection({ aboutLoading }) {
+  const aboutData = useAboutData();
+
   if (aboutLoading) return <div>Loading...</div>;
 
-  const { name, address, email, phone } = aboutData;
+  const { name, address, email, phone } = aboutData[0] || {};
 
   if (!name || !address || !email || !phone)
     return <div className="text-center">Nothing data available...</div>;

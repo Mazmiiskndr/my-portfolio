@@ -1,4 +1,8 @@
-export default function HeroStarted({ aboutLoading, aboutData }) {
+import { useAboutData } from "@context/AboutDataContext";
+
+export default function HeroStarted({ aboutLoading }) {
+  const aboutData = useAboutData();
+
   if (aboutLoading) return <div>Loading...</div>;
 
   const {
@@ -11,7 +15,7 @@ export default function HeroStarted({ aboutLoading, aboutData }) {
     whatsapp,
     resume,
     description,
-  } = aboutData;
+  } = aboutData[0] || {};
 
   if (!name || !position || !description)
     return <div className="text-center">Nothing data available...</div>;

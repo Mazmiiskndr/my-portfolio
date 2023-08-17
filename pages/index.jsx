@@ -4,18 +4,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Resume from "@components/Resume";
 import Layout from "@layouts/Layout";
 import { servicesSliderProps } from "../src/sliderProps";
-import { useFetchAbout } from "@hooks/useFetchAbout";
 import HeroStarted from "@components/HeroStarted";
 import ContactSection from "@components/ContactSection";
 const PortfolioIsotope = dynamic(() => import("@components/PortfolioIsotope"), {
   ssr: false,
 });
 const Index = () => {
-  const [aboutData, aboutLoading] = useFetchAbout();
   return (
     <Layout pageClassName={"home dark-skin"}>
       {/* Section - Hero Started */}
-      <HeroStarted aboutData={aboutData} aboutLoading={aboutLoading} />
+      <HeroStarted />
       {/* Section - Services */}
       <section
         className="lui-section lui-gradient-bottom"
@@ -638,7 +636,7 @@ const Index = () => {
         </div>
       </section>
       {/* Section - Contacts */}
-      <ContactSection aboutData={aboutData} aboutLoading={aboutLoading} /> 
+      <ContactSection /> 
     </Layout>
   );
 };

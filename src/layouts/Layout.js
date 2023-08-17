@@ -5,10 +5,16 @@ import {
   jarallaxAnimation,
   stickyNav,
 } from "../utils";
+import { useFetchAbout } from "@hooks/useFetchAbout";
+import { AboutDataContext } from "@context/AboutDataContext";
 import Footer from "./Footer";
 import Header from "./Header";
 
 const Layout = ({ children, pageClassName }) => {
+  // Fetch about data using custom hook
+  const aboutData = useFetchAbout();
+
+  // Activate animations and cursor, attach listeners for scroll events
   useEffect(() => {
     activeAnimation();
     initCursor();
@@ -16,6 +22,7 @@ const Layout = ({ children, pageClassName }) => {
     window.addEventListener("scroll", stickyNav);
   }, []);
 
+  // Load Splitting library for text animations, and set page class name
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.Splitting = require("splitting");
@@ -26,17 +33,19 @@ const Layout = ({ children, pageClassName }) => {
   }, [pageClassName]);
 
   return (
-    <Fragment>
-      <div className="container-page">
-        <Header />
-        {/* Wrapper */}
-        <div className="wrapper">{children}</div>
-        {/* Footer */}
-        <Footer />
-      </div>
-      {/* cursor */}
-      <div className="cursor" />
-    </Fragment>
+    <AboutDataContext.Provider value={aboutData}>
+      <Fragment>
+        <div className="container-page">
+          <Header />
+          {/* Wrapper */}
+          <div className="wrapper">{children}</div>
+          {/* Footer */}
+          <Footer />
+        </div>
+        {/* cursor */}
+        <div className="cursor" />
+      </Fragment>
+    </AboutDataContext.Provider>
   );
 };
 export default Layout;
