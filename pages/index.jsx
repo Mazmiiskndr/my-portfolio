@@ -5,7 +5,7 @@ import Layout from "@layouts/Layout";
 import HeroStarted from "@components/HeroStarted";
 import ContactSection from "@components/ContactSection";
 import ServicesSection from "@components/ServicesSection";
-import SkillsSection from "../src/components/SkillsSection";
+import SkillsSection from "@components/SkillsSection";
 const PortfolioIsotope = dynamic(() => import("@components/PortfolioIsotope"), {
   ssr: false,
 });

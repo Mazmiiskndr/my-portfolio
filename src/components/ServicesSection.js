@@ -1,6 +1,7 @@
 import { servicesSliderProps } from "../../src/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useFetchServices } from "@hooks/useFetchServices";
+import React from "react";
 
 export default function ServicesSection() {
   const [servicesData, servicesLoading] = useFetchServices();
@@ -42,36 +43,34 @@ export default function ServicesSection() {
               data-animate="active"
             >
               {servicesData && servicesData.length > 0 ? (
-                servicesData.map((service, index) => (
-                  <>
-                    <SwiperSlide className="swiper-slide">
-                      <div className="services-item">
-                        <div className="lui-subtitle">
-                          <span> {service.title} </span>
-                        </div>
-                        <div className="icon" />
-                        <h5 className="lui-title">
-                          <span> {service.subtitle} </span>
-                        </h5>
-                        <div className="lui-text">
-                          <div>
-                            {" "}
-                            {service.description}{" "}
-                          </div>
-                        </div>
-                        <a href="#works-section" className="lnk">
-                          {" "}
-                          See Portfolio{" "}
-                        </a>
-                        <img
-                          className="image"
-                          src="assets/images/pat-2.png"
-                          alt="PAT 2"
-                          loading="lazy"
-                        />
+                servicesData.map((service) => (
+                  <SwiperSlide
+                    className="swiper-slide"
+                    key={`service-${service.id}`}
+                  >
+                    <div className="services-item">
+                      <div className="lui-subtitle">
+                        <span> {service.title} </span>
                       </div>
-                    </SwiperSlide>
-                  </>
+                      <div className="icon" />
+                      <h5 className="lui-title">
+                        <span> {service.subtitle} </span>
+                      </h5>
+                      <div className="lui-text">
+                        <div> {service.description} </div>
+                      </div>
+                      <a href="#works-section" className="lnk">
+                        {" "}
+                        See Portfolio{" "}
+                      </a>
+                      <img
+                        className="image"
+                        src="assets/images/pat-2.png"
+                        alt="PAT 2"
+                        loading="lazy"
+                      />
+                    </div>
+                  </SwiperSlide>
                 ))
               ) : (
                 <div>No Services Data Available</div>

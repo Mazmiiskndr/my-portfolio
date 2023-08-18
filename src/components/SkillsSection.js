@@ -1,4 +1,5 @@
 import { useFetchSkills } from "@hooks/useFetchSkills";
+import React from "react";
 
 export default function SkillsSection() {
   const [skillsData, skillsLoading] = useFetchSkills();
@@ -38,7 +39,7 @@ export default function SkillsSection() {
             <div className="row">
               {skillsData && skillsData.length > 0 ? (
                 skillsData.map((skill, index) => (
-                  <>
+                  <React.Fragment key={`fragment-${skill.id}`}>
                     {index % 2 === 0 && (
                       <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 mt-md-3 mt-0">
                         <div className="skills-items">
@@ -79,7 +80,7 @@ export default function SkillsSection() {
                         </div>
                       </div>
                     )}
-                  </>
+                  </React.Fragment>
                 ))
               ) : (
                 <div>No Skills Data Available</div>
