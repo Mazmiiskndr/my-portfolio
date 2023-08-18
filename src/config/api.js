@@ -1,19 +1,24 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const api = axios.create({
+  baseURL: `http://127.0.0.1:8000/api`,
+});
 
 /**
  * Fetch data from the specified endpoint
- * @param {string} endpoint - The endpoint to fetch data from (e.g., "resumes/category/education")
+ * @param {string} endpoint - The endpoint to fetch data from (e.g., "portfolios")
+ * @param {object} [params] - Optional parameters to include in the query string
  * @return {Promise<any>} - The data retrieved from the API
  */
-export const fetchData = async (endpoint) => {
+export const fetchData = async (endpoint, params = null) => {
   try {
-    const url = `${API_BASE_URL}/${endpoint}`; 
-    const response = await axios.get(url);
+    const response = await api.get(`/${endpoint}`, { params });
     return response.data;
   } catch (error) {
-    console.error(`An error occurred while fetching data from ${url}:`, error);
+    console.error(
+      `An error occurred while fetching data from ${endpoint}:`,
+      error
+    );
     return null;
   }
 };

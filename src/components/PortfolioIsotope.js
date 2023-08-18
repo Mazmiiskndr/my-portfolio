@@ -1,7 +1,10 @@
 import Isotope from "isotope-layout";
 import Link from "next/link";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState, useMemo } from "react";
+import { useFetchPortfolios } from "@hooks/useFetchPortfolios";
 const PortfolioIsotope = ({ noViewMore }) => {
+  const [portfoliosData, portfoliosLoading] = useFetchPortfolios({ limit: 6 });
+  console.log(portfoliosData);
   // Isotope
   const isotope = useRef();
   const [filterKey, setFilterKey] = useState("*");
