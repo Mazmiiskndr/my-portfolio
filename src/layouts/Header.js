@@ -39,7 +39,7 @@ const Header = ({ aboutLoading }) => {
                     <img
                       width={60}
                       height={38}
-                      src="assets/images/favicon/logo-azmi-2.png"
+                      src="/assets/images/favicon/logo-azmi-2.png"
                       alt=""
                     />
                   </a>

@@ -267,10 +267,10 @@ body.dark-skin {
 	color: #eaeaea;
 }
 
-.dark-skin .header__builder .logo img,
+/* .dark-skin .header__builder .logo img,
 .dark-skin .preloader .spinner-logo img {
   filter: brightness(0) invert(1);
-}
+} */
 
 /**
 * Footer
