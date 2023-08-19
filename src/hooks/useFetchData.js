@@ -1,5 +1,5 @@
 // useFetchData.js
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { fetchData } from "@config/api";
 
 /**
@@ -16,26 +16,25 @@ export const useFetchData = (endpoint, transformData = null, params = null) => {
   // State to manage the loading status
   const [loading, setLoading] = useState(true);
 
+  // Memoize the parameters to prevent unnecessary re-renders
+  const memoizedParams = useMemo(() => params, Object.values(params || {}));
+
   useEffect(() => {
-    // Fetch data from the given endpoint
-    fetchData(endpoint, params)
+    fetchData(endpoint, memoizedParams)
       .then((fetchedData) => {
-        // Transform the fetched data if a transform function is provided
         setData(
           transformData ? transformData(fetchedData) : fetchedData.results
         );
       })
       .catch(() => {
-        // Log the error and set the data as empty on error
         console.error(`Error fetching ${endpoint} data`);
         setData([]);
       })
       .finally(() => {
-        // Set loading to false once the data has been fetched
         setLoading(false);
       });
-    // Depend on endpoint and params, so the hook will re-run if they change
-  }, [endpoint, params]);
+    // Depend on endpoint and memoizedParams, so the hook will re-run if they change
+  }, [endpoint, memoizedParams]);
 
   return [data, loading];
 };
