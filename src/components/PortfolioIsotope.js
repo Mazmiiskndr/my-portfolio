@@ -2,41 +2,72 @@ import Isotope from "isotope-layout";
 import Link from "next/link";
 import { Fragment, useEffect, useRef, useState, useMemo } from "react";
 // import { useFetchPortfolios } from "@hooks/useFetchPortfolios";
+import { useFetchCategoryPortfolios } from "@hooks/useFetchCategoryPortfolios";
 const PortfolioIsotope = ({ noViewMore }) => {
-  // TODO:
+  // TODO: SHOW THE PORTFOLIOS
   // const [portfoliosData, portfoliosLoading] = useFetchPortfolios({ limit: 6 });
   // console.log(portfoliosData);
+  
+  // Fetching category data and loading status
+  const [categoryPortfoliosData, categoryPortfoliosLoading] =
+    useFetchCategoryPortfolios({ limit: 6 });
 
-  // Isotope
+  // Reference to control Isotope
   const isotope = useRef();
+
+  // State to control filter key
   const [filterKey, setFilterKey] = useState("*");
+
+  // Handler to change filter key
+  const handleFilterKeyChange = (key) => () => setFilterKey(key);
+
+  // Function to set the active button class
+  const activeBtn = (value) => (value === filterKey ? "active" : "");
+
+  // Render category portfolios with memoization
+  const renderCategoryPortfolios = useMemo(() => {
+    // Display loading if still loading
+    if (categoryPortfoliosLoading) return <div>Loading...</div>;
+
+    // Display message if there is no data
+    if (categoryPortfoliosData.length === 0)
+      return <div>No Category Portfolios Data Available</div>;
+
+    // Render each category portfolio
+    return categoryPortfoliosData.map((category) => (
+      <a
+        key={category.id}
+        className={`c-pointer lui-subtitle ${activeBtn(
+          `sorting-${category.slug}`
+        )}`}
+        onClick={handleFilterKeyChange(`sorting-${category.slug}`)}
+        data-href={`.sorting-${category.slug}`}
+      >
+        {category.name}
+      </a>
+    ));
+  }, [categoryPortfoliosLoading, categoryPortfoliosData, filterKey]);
+
+  // Side effect to initialize Isotope
   useEffect(() => {
     isotope.current = new Isotope(".works-items", {
       itemSelector: ".works-col",
-      //    layoutMode: "fitRows",
       percentPosition: true,
-      masonry: {
-        columnWidth: ".works-col",
-      },
-      animationOptions: {
-        duration: 750,
-        easing: "linear",
-        queue: false,
-      },
+      masonry: { columnWidth: ".works-col" },
+      animationOptions: { duration: 750, easing: "linear", queue: false },
     });
-    return () => isotope.current.destroy();
-  });
+    return () => isotope.current.destroy(); // Clean up Isotope when unmounting
+  }, []);
+
+  // Side effect to set filter on filterKey change
   useEffect(() => {
     if (isotope.current) {
       filterKey === "*"
-        ? isotope.current.arrange({ filter: `*` })
-        : isotope.current.arrange({ filter: `.${filterKey}` });
+        ? isotope.current.arrange({ filter: `*` }) // Filter all if "*"
+        : isotope.current.arrange({ filter: `.${filterKey}` }); // Or filter based on filterKey
     }
   }, [filterKey]);
-  const handleFilterKeyChange = (key) => () => {
-    setFilterKey(key);
-  };
-  const activeBtn = (value) => (value === filterKey ? "active" : "");
+
   return (
     <Fragment>
       <div className="works-box">
@@ -45,6 +76,14 @@ const PortfolioIsotope = ({ noViewMore }) => {
           data-animate="active"
         >
           <a
+            className={`c-pointer lui-subtitle ${activeBtn("*")}`}
+            onClick={handleFilterKeyChange("*")}
+            data-href=".works-col"
+          >
+            All
+          </a>
+          {renderCategoryPortfolios}
+          {/* <a
             className={`c-pointer lui-subtitle ${activeBtn("*")}`}
             onClick={handleFilterKeyChange("*")}
             data-href=".works-col"
@@ -84,7 +123,7 @@ const PortfolioIsotope = ({ noViewMore }) => {
             data-href=".sorting-branding"
           >
             Branding
-          </a>
+          </a> */}
         </div>
         <div className="works-items works-masonry-items row">
           <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-branding sorting-photo ">
@@ -376,4 +415,8 @@ const PortfolioIsotope = ({ noViewMore }) => {
     </Fragment>
   );
 };
+
+
 export default PortfolioIsotope;
+
+
