@@ -11,12 +11,10 @@ export default function LoadingBar() {
     }, 600);
     return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <div className="loadingContainer">
-        <div className="loadingBar" style={{ width: `${progress}%` }}>
-
-        </div>
+      <div className="loadingBar" style={{ width: `${progress}%` }}></div>
     </div>
   );
 }
