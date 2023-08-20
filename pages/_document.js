@@ -67,6 +67,12 @@ class MyDocument extends Document {
             type="text/css"
             media="all"
           />
+          <link
+            rel="stylesheet"
+            href="/assets/css/loading.css"
+            type="text/css"
+            media="all"
+          />
           {/* Favicon */}
           <link
             rel="shortcut icon"

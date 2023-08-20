@@ -9,6 +9,7 @@ import { useFetchAbout } from "@hooks/useFetchAbout";
 import { AboutDataContext } from "@context/AboutDataContext";
 import Footer from "./Footer";
 import Header from "./Header";
+import LoadingBar from "@components/LoadingBar";
 
 const Layout = ({ children, pageClassName }) => {
   // Fetch about data using custom hook
@@ -35,6 +36,7 @@ const Layout = ({ children, pageClassName }) => {
   return (
     <AboutDataContext.Provider value={aboutData}>
       <Fragment>
+        <LoadingBar/>
         <div className="container-page">
           <Header />
           {/* Wrapper */}
