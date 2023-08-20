@@ -5,10 +5,7 @@ export default function ContactSection({ aboutLoading }) {
 
   if (aboutLoading) return <div>Loading...</div>;
 
-  const { name, address, email, phone } = aboutData[0] || {};
-
-  if (!name || !address || !email || !phone)
-    return <div className="text-center">Nothing data available...</div>;
+  const { address, email, phone } = aboutData[0] || {};
 
   return (
     <section className="lui-section lui-gradient-bottom" id="contact-section">

@@ -23,7 +23,7 @@ const Header = ({ aboutLoading }) => {
   if (aboutLoading) return <div>Loading...</div>;
 
   if (!github || !instagram || !facebook || !email || !whatsapp)
-    return <div className="text-center">Nothing data available...</div>;
+    return <div className="text-center">Loading...</div>;
 
   return (
     <Fragment>

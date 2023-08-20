@@ -17,9 +17,6 @@ export default function HeroStarted({ aboutLoading }) {
     description,
   } = aboutData[0] || {};
 
-  if (!name || !position || !description)
-    return <div className="text-center">Nothing data available...</div>;
-
   return (
     <section
       className="lui-section lui-section-hero lui-gradient-top"
