@@ -85,7 +85,9 @@ const PortfolioIsotope = ({ noViewMore }) => {
               <p>{truncateText(portfolio.description, 100)}</p>
             </div>
             <Link legacyBehavior href={portfolio.project_link}>
-              <a className="lnk">See project</a>
+              <a className="lnk" target="_blank" rel="noopener noreferrer">
+                See project
+              </a>
             </Link>
           </div>
           <img
