@@ -7,8 +7,6 @@ export default function BlogSection() {
   const [blogsData, blogsLoading] = useFetchBlogs({
     limit: 3,
   });
-  console.log(blogsData, blogsLoading);
-
   const renderBlogs = useMemo(() => {
     // Display loading if still loading
     if (blogsLoading) return <div>Loading...</div>;
