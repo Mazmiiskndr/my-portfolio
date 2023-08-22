@@ -1,6 +1,77 @@
 import Link from "next/link";
+import { useFetchBlogs } from "@hooks/useFetchBlogs";
+import { useMemo } from "react";
+import { truncateText, formatDate } from "../utils";
 
 export default function BlogSection() {
+  const [blogsData, blogsLoading] = useFetchBlogs({
+    limit: 3,
+  });
+  console.log(blogsData, blogsLoading);
+
+  const renderBlogs = useMemo(() => {
+    // Display loading if still loading
+    if (blogsLoading) return <div>Loading...</div>;
+
+    // Display message if there is no data
+    if (blogsData.length === 0)
+      return <div>No Category Blogs Data Available</div>;
+
+    // Render each blog
+    return blogsData.map((blog) => {
+      // Use the formatDate utility function
+      const formattedDate = formatDate(blog.created_at);
+
+      // Rest of your code...
+      return (
+        <div key={blog.id} className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <div
+            className="archive-item scrolla-element-anim-1 scroll-animate"
+            data-animate="active"
+          >
+            <div className="image">
+              <Link legacyBehavior href={`/blog-single/${blog.slug}`}>
+                <a>
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={blog.image}
+                    alt={blog.title}
+                  />
+                </a>
+              </Link>
+            </div>
+            <div className="desc">
+              <div className="category lui-subtitle">
+                <span>{formattedDate}</span>
+              </div>
+              <h5
+                className="lui-title"
+                style={{
+                  height: "2.4em",
+                  lineHeight: "1.2em",
+                  overflow: "hidden",
+                }}
+              >
+                <Link legacyBehavior href={`/blog-single/${blog.slug}`}>
+                  <a>{truncateText(blog.title, 50)}</a>
+                </Link>
+              </h5>
+              <div className="lui-text">
+                <p>{truncateText(blog.content, 100)}</p>
+                <div className="readmore">
+                  <Link legacyBehavior href={`/blog-single/${blog.slug}`}>
+                    <a className="lnk">Read more</a>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }, [blogsLoading, blogsData]);
+
   return (
     <section className="lui-section lui-gradient-top" id="blog-section">
       {/* Heading */}
@@ -21,7 +92,7 @@ export default function BlogSection() {
             >
               <span>
                 {" "}
-                my <b>Articles and Advice</b>
+                my <b>Articles</b>
               </span>
             </div>
           </div>
@@ -31,7 +102,8 @@ export default function BlogSection() {
       <div className="v-line v-line-right">
         <div className="container">
           <div className="blog-items row">
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            {renderBlogs}
+            {/* <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <div
                 className="archive-item scrolla-element-anim-1 scroll-animate"
                 data-animate="active"
@@ -153,7 +225,7 @@ export default function BlogSection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="load-more">
             <Link legacyBehavior href="/blog">
