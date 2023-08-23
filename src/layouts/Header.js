@@ -190,7 +190,7 @@ const Header = () => {
                                   display: `${pageToggle ? "block" : "none"}`,
                                 }}
                               >
-                                <li className="menu-item">
+                                {/* <li className="menu-item">
                                   <Link legacyBehavior href="/works-list">
                                     <a
                                       className="splitting-text-anim-1"
@@ -199,18 +199,18 @@ const Header = () => {
                                       Works (List)
                                     </a>
                                   </Link>
-                                </li>
+                                </li> */}
                                 <li className="menu-item">
                                   <Link legacyBehavior href="/works">
                                     <a
                                       className="splitting-text-anim-1"
                                       data-splitting="chars"
                                     >
-                                      Works (Grid)
+                                      Works
                                     </a>
                                   </Link>
                                 </li>
-                                <li className="menu-item">
+                                {/* <li className="menu-item">
                                   <Link legacyBehavior href="/work-single">
                                     <a
                                       className="splitting-text-anim-1"
@@ -239,7 +239,7 @@ const Header = () => {
                                       Single Post
                                     </a>
                                   </Link>
-                                </li>
+                                </li> */}
                               </ul>
                             </li>
                           </ul>
