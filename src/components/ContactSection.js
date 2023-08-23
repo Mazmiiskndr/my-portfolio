@@ -1,4 +1,6 @@
 import { useAboutData } from "@context/AboutDataContext";
+import React, { useState } from "react";
+import { postData } from "@config/api";
 
 export default function ContactSection({ aboutLoading }) {
   const aboutData = useAboutData();
@@ -7,6 +9,30 @@ export default function ContactSection({ aboutLoading }) {
 
   const { address, email, phone } = aboutData[0] || {};
 
+  // State untuk mengelola pesan sukses atau error
+  const [messageStatus, setMessageStatus] = useState(null);
+
+  // Fungsi untuk menangani pengiriman form
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const form = document.getElementById("cform");
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Post data ke endpoint "contact"
+    postData("contact", data)
+      .then((response) => {
+        console.log(response);
+        // Handle response sesuai kebutuhan
+        // Menampilkan pesan sukses jika pengiriman berhasil
+        setMessageStatus("Thanks, your message is sent successfully.");
+      })
+      .catch(() => {
+        // Menampilkan pesan error jika terjadi kesalahan
+        setMessageStatus("An error occurred. Please try again.");
+      });
+  };
+  // TODO: POST CONTACT FORM DATA TO API
   return (
     <section className="lui-section lui-gradient-top" id="contact-section">
       {/* Heading */}
@@ -109,7 +135,7 @@ export default function ContactSection({ aboutLoading }) {
                   loading="lazy"
                 />
                 <div className="contacts-form">
-                  <form onSubmit={(e) => e.preventDefault()} id="cform">
+                  <form onSubmit={handleFormSubmit} id="cform">
                     <div className="row">
                       <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <div className="group">
@@ -144,28 +170,21 @@ export default function ContactSection({ aboutLoading }) {
                         </div>
                       </div>
                       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
-                        <div className="terms-label">
+                        {/* <div className="terms-label">
                           * Accept the terms and conditions.
-                        </div>
-                        <a
-                          href="#"
-                          className="btn"
-                          onClick={(e) => {
-                            e.preventDefault(); // Ini akan mencegah tautan dari pergi ke URL "#"
-                            const form = document.getElementById("cform"); // Dapatkan elemen form dengan id "cform"
-                            if (form) {
-                              form.submit(); // Kirim form
-                            }
-                          }}
+                        </div> */}
+                        <div
+                          className="terms-label"
+                          style={{ display: messageStatus ? "block" : "none" }}
                         >
+                          {messageStatus}
+                        </div>
+                        <button className="btn" type="submit">
                           <span>Send Message</span>
-                        </a>
+                        </button>
                       </div>
                     </div>
                   </form>
-                  <div className="alert-success" style={{ display: "none" }}>
-                    <p>Thanks, your message is sent successfully.</p>
-                  </div>
                 </div>
               </div>
             </div>

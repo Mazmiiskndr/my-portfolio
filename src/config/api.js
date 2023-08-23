@@ -22,3 +22,22 @@ export const fetchData = async (endpoint, params = null) => {
     return null;
   }
 };
+
+/**
+ * Post data to the specified endpoint
+ * @param {string} endpoint - The endpoint to post data to (e.g., "contact")
+ * @param {object} data - The data to post
+ * @return {Promise<any>} - The response data from the API
+ */
+export const postData = async (endpoint, data) => {
+  try {
+    const response = await api.post(`/${endpoint}`, data);
+    return response.data;
+  } catch (error) {
+    console.error(
+      `An error occurred while posting data to ${endpoint}:`,
+      error
+    );
+    return null;
+  }
+};

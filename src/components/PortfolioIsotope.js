@@ -47,12 +47,11 @@ const PortfolioIsotope = ({ noViewMore }) => {
           <div className="image">
             <div className="img">
               <Link legacyBehavior href={`/work-single/${portfolio.slug}`}>
-                {/* TODO: SHOW IMAGE WITH URL FIX */}
                 <a>
                   <img
                     loading="lazy"
                     decoding="async"
-                    src={`/assets/images/work4.jpeg`}
+                    src={portfolio.image}
                     alt={portfolio.title}
                   />
                   <span className="overlay" />
