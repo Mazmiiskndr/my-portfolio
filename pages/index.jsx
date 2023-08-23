@@ -59,7 +59,7 @@ const Index = () => {
       <Resume />
       {/* TODO: */}
       {/* Section - Blog */}
-      <BlogSection/>  
+      {/* <BlogSection/>   */}
       {/* Section - Contacts */}
       <ContactSection /> 
     </Layout>

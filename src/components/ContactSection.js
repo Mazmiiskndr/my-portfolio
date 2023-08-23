@@ -8,7 +8,7 @@ export default function ContactSection({ aboutLoading }) {
   const { address, email, phone } = aboutData[0] || {};
 
   return (
-    <section className="lui-section lui-gradient-bottom" id="contact-section">
+    <section className="lui-section lui-gradient-top" id="contact-section">
       {/* Heading */}
       <div className="lui-heading">
         <div className="container">
