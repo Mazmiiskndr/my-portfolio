@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
   activeAnimation,
   initCursor,
@@ -34,9 +34,9 @@ const Layout = ({ children, pageClassName }) => {
   }, [pageClassName]);
 
   return (
-    <AboutDataContext.Provider value={aboutData}>
-      <Fragment>
-        <LoadingBar/>
+    <React.StrictMode>
+      <AboutDataContext.Provider value={aboutData}>
+        <LoadingBar />
         <div className="container-page">
           <Header />
           {/* Wrapper */}
@@ -46,8 +46,8 @@ const Layout = ({ children, pageClassName }) => {
         </div>
         {/* cursor */}
         <div className="cursor" />
-      </Fragment>
-    </AboutDataContext.Provider>
+      </AboutDataContext.Provider>
+    </React.StrictMode>
   );
 };
 export default Layout;

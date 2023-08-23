@@ -17,10 +17,13 @@ export const useFetchData = (endpoint, transformData = null, params = null) => {
   const [loading, setLoading] = useState(true);
 
   // Memoize the parameters to prevent unnecessary re-renders
-  const memoizedParams = useMemo(() => params, Object.values(params || {}));
+  const memoizedParams = useMemo(
+    () => ({ endpoint, transformData, params }),
+    [endpoint, transformData, params]
+  );
 
   useEffect(() => {
-    fetchData(endpoint, memoizedParams)
+    fetchData(memoizedParams.endpoint, memoizedParams.params)
       .then((fetchedData) => {
         setData(
           transformData ? transformData(fetchedData) : fetchedData.results
@@ -34,7 +37,7 @@ export const useFetchData = (endpoint, transformData = null, params = null) => {
         setLoading(false);
       });
     // Depend on endpoint and memoizedParams, so the hook will re-run if they change
-  }, [endpoint, memoizedParams]);
+  }, [memoizedParams.endpoint]);
 
   return [data, loading];
 };

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 import Layout from "@layouts/Layout";
+import { useFetchPortfolioBySlug } from "@hooks/useFetchPortfolios";
 const WorkSingleISotope = dynamic(
   () => import("@components/WorkSingleISotope"),
   {
@@ -12,8 +13,22 @@ const WorkSingleISotope = dynamic(
 const WorkSingle = () => {
   const [videoToggle, setVideoToggle] = useState(false);
   const router = useRouter();
-  const { slug } = router.query; // Mendapatkan slug dari URL
-  console.log(slug);
+  // const { slug } = router.query; 
+  // console.log(router.query.slug);
+  const [portfolioData, portfolioLoading,] =
+    useFetchPortfolioBySlug(router.query.slug);
+  if(portfolioLoading) return <div>Loading...</div>
+  if (!portfolioData || !portfolioData.portfolio)
+    return <div className="text-center">Data Not Found</div>;
+  const {
+    title,
+    description,
+    project_date,
+    tech_stack,
+    categories,
+    image,
+    project_link,
+  } = portfolioData.portfolio;
   return (
     <Layout pageClassName={"portfolio-template dark-skin"}>
       {/* Section Started Heading */}
@@ -26,7 +41,7 @@ const WorkSingle = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span>Zorro</span>
+              <span>{title}</span>
             </h1>
             <div
               className="m-subtitle splitting-text-anim-1 scroll-animate"
@@ -101,28 +116,12 @@ const WorkSingle = () => {
                 <h4>Description</h4>
               </div>
             </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <div className="post-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using ‘Content
-                  here, content here’, making it look like readable English.
-                </p>
+                {description}
               </div>
             </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <div className="post-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using ‘Content
-                  here, content here’, making it look like readable English.
-                </p>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>

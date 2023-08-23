@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import PreLoader from "../src/layouts/PreLoader";
 import "../styles/globals.css";
 const App = ({ Component, pageProps }) => {
@@ -11,7 +11,7 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <Fragment>
+    <React.StrictMode>
       <Head>
         <title>Moch Azmi Iskandar - Personal Portfolio</title>
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,7 +22,7 @@ const App = ({ Component, pageProps }) => {
       </Head>
       {loader && <PreLoader />}
       <Component {...pageProps} />
-    </Fragment>
+    </React.StrictMode>
   );
 };
 export default App;
