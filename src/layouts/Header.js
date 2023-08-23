@@ -153,7 +153,7 @@ const Header = ({ aboutLoading }) => {
                                 Resume
                               </a>
                             </li>
-                            <li className="menu-item">
+                            {/* <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
@@ -162,7 +162,7 @@ const Header = ({ aboutLoading }) => {
                               >
                                 Blog
                               </a>
-                            </li>
+                            </li> */}
                             <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"

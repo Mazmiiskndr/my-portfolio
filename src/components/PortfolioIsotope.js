@@ -23,6 +23,23 @@ const PortfolioIsotope = ({ noViewMore }) => {
   // Function to set the active button class
   const activeBtn = (value) => (value === filterKey ? "active" : "");
 
+  const truncateHtmlText = (html, length) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+
+    // Ambil elemen body atau elemen lain yang ingin Anda potong teksnya
+    const bodyText = doc.body.innerText;
+
+    // Potong teks sesuai panjang yang diinginkan
+    const truncatedText = truncateText(bodyText, length);
+
+    // Anda bisa menggantikan innerText atau innerHTML elemen tertentu dengan teks yang telah dipotong
+    doc.body.innerText = truncatedText;
+
+    // Kembalikan HTML yang telah dimodifikasi sebagai string
+    return doc.body.innerHTML;
+  };
+
   // Render the portfolios with loading and no data handling
   const renderPortfolios = useMemo(() => {
     // Display loading if still loading
@@ -33,71 +50,78 @@ const PortfolioIsotope = ({ noViewMore }) => {
       return <div>No Category Portfolios Data Available</div>;
 
     // Render each portfolio
-    return portfoliosData.map((portfolio) => (
-      <div
-        key={portfolio.id}
-        className={`works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-${portfolio.categories
-          ?.map((category) => category.slug)
-          .join(" sorting-")} `}
-      >
+    return portfoliosData.map((portfolio) => { 
+      const truncatedDescriptionHtml = truncateHtmlText(
+        portfolio.description,
+        100
+      );
+
+      return (
         <div
-          className="works-item scrolla-element-anim-1 scroll-animate"
-          data-animate="active"
+          key={portfolio.id}
+          className={`works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-${portfolio.categories
+            ?.map((category) => category.slug)
+            .join(" sorting-")} `}
         >
-          <div className="image">
-            <div className="img">
-              <Link legacyBehavior href={`/work-single/${portfolio.slug}`}>
-                <a>
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src={portfolio.image}
-                    alt={portfolio.title}
-                  />
-                  <span className="overlay" />
+          <div
+            className="works-item scrolla-element-anim-1 scroll-animate"
+            data-animate="active"
+          >
+            <div className="image">
+              <div className="img">
+                <Link legacyBehavior href={`/work-single/${portfolio.slug}`}>
+                  <a>
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src={portfolio.image}
+                      alt={portfolio.title}
+                    />
+                    <span className="overlay" />
+                  </a>
+                </Link>
+              </div>
+            </div>
+            <div className="desc">
+              <span className="category">
+                {portfolio.categories?.map((category, index) => (
+                  <span key={category.id}>
+                    {category.name}
+                    {index < portfolio.categories.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+              </span>
+              <h6
+                className="name"
+                style={{
+                  height: "2.4em",
+                  lineHeight: "1.2em",
+                  overflow: "hidden",
+                }}
+              >
+                <Link legacyBehavior href={`/work-single/${portfolio.slug}`}>
+                  <a>{truncateText(portfolio.title, 50)}</a>
+                </Link>
+              </h6>
+              <div
+                className="text"
+                dangerouslySetInnerHTML={{ __html: truncatedDescriptionHtml }}
+              ></div>
+              <Link legacyBehavior href={portfolio.project_link}>
+                <a className="lnk" target="_blank" rel="noopener noreferrer">
+                  See project
                 </a>
               </Link>
             </div>
+            <img
+              className="bg-img"
+              src="assets/images/pat-2.png"
+              alt="Pat 2"
+              loading="lazy"
+            />
           </div>
-          <div className="desc">
-            <span className="category">
-              {portfolio.categories?.map((category, index) => (
-                <span key={category.id}>
-                  {category.name}
-                  {index < portfolio.categories.length - 1 ? ", " : ""}
-                </span>
-              ))}
-            </span>
-            <h6
-              className="name"
-              style={{
-                height: "2.4em",
-                lineHeight: "1.2em",
-                overflow: "hidden",
-              }}
-            >
-              <Link legacyBehavior href={`/work-single/${portfolio.slug}`}>
-                <a>{truncateText(portfolio.title, 50)}</a>
-              </Link>
-            </h6>
-            <div className="text">
-              <p>{truncateText(portfolio.description, 100)}</p>
-            </div>
-            <Link legacyBehavior href={portfolio.project_link}>
-              <a className="lnk" target="_blank" rel="noopener noreferrer">
-                See project
-              </a>
-            </Link>
-          </div>
-          <img
-            className="bg-img"
-            src="assets/images/pat-2.png"
-            alt="Pat 2"
-            loading="lazy"
-          />
         </div>
-      </div>
-    ));
+      );});
   }, [portfoliosLoading, portfoliosData]);
 
   // Render category portfolios with memoization
