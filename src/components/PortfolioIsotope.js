@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Fragment, useLayoutEffect, useRef, useState, useMemo } from "react";
 import { useFetchPortfolios } from "@hooks/useFetchPortfolios";
 import { useFetchCategoryPortfolios } from "@hooks/useFetchCategoryPortfolios";
-import { truncateText } from "../utils";
+import { truncateText, truncateHtmlText } from "../utils";
 const PortfolioIsotope = ({ noViewMore }) => {
   const [portfoliosData, portfoliosLoading] = useFetchPortfolios({ limit: 6 });
 
@@ -22,23 +22,6 @@ const PortfolioIsotope = ({ noViewMore }) => {
 
   // Function to set the active button class
   const activeBtn = (value) => (value === filterKey ? "active" : "");
-
-  const truncateHtmlText = (html, length) => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-
-    // Ambil elemen body atau elemen lain yang ingin Anda potong teksnya
-    const bodyText = doc.body.innerText;
-
-    // Potong teks sesuai panjang yang diinginkan
-    const truncatedText = truncateText(bodyText, length);
-
-    // Anda bisa menggantikan innerText atau innerHTML elemen tertentu dengan teks yang telah dipotong
-    doc.body.innerText = truncatedText;
-
-    // Kembalikan HTML yang telah dimodifikasi sebagai string
-    return doc.body.innerHTML;
-  };
 
   // Render the portfolios with loading and no data handling
   const renderPortfolios = useMemo(() => {
