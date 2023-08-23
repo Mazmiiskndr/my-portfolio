@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Layout from "@layouts/Layout";
 import { useFetchPortfolioBySlug } from "@hooks/useFetchPortfolios";
+import { formatDate } from "@src/utils";
 const WorkSingleISotope = dynamic(
   () => import("@components/WorkSingleISotope"),
   {
@@ -13,13 +14,15 @@ const WorkSingleISotope = dynamic(
 const WorkSingle = () => {
   const [videoToggle, setVideoToggle] = useState(false);
   const router = useRouter();
-  // const { slug } = router.query; 
-  // console.log(router.query.slug);
-  const [portfolioData, portfolioLoading,] =
-    useFetchPortfolioBySlug(router.query.slug);
-  if(portfolioLoading) return <div>Loading...</div>
+  const [portfolioData, portfolioLoading] = useFetchPortfolioBySlug(
+    router.query.slug
+  );
+
+  if (portfolioLoading) return <div>Loading...</div>;
+
   if (!portfolioData || !portfolioData.portfolio)
     return <div className="text-center">Data Not Found</div>;
+    
   const {
     title,
     description,
@@ -59,9 +62,9 @@ const WorkSingle = () => {
               <div className="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div className="m-details">
                   <div className="details-label">
-                    <span>Year:</span>
+                    <span>Date:</span>
                     <strong>
-                      <span>2018</span>
+                      <span>{formatDate(project_date)}</span>
                     </strong>
                   </div>
                   <div className="details-label">
@@ -117,11 +120,8 @@ const WorkSingle = () => {
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div className="post-content">
-                {description}
-              </div>
+              <div className="post-content">{description}</div>
             </div>
-            
           </div>
         </div>
       </section>
