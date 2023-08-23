@@ -1,6 +1,7 @@
 import Layout from "@layouts/Layout";
 import { useFetchPortfolioBySlug } from "@hooks/useFetchPortfolios";
 import { formatDate } from "@src/utils";
+import Head from "next/head";
 
 export const getServerSideProps = async (context) => {
   const slug = context.params.slug;
@@ -22,6 +23,9 @@ const WorkSingle = ({ slug }) => {
 
   return (
     <Layout pageClassName={"portfolio-template dark-skin"}>
+      <Head>
+        <title>{title} - Moch Azmi Iskandar</title>
+      </Head>
       {/* Section Started Heading */}
       <section className="section section-inner started-heading">
         {/* Heading */}
