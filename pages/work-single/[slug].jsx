@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Layout from "@layouts/Layout";
 import { useFetchPortfolioBySlug } from "@hooks/useFetchPortfolios";
 import { formatDate } from "@src/utils";
@@ -102,15 +101,13 @@ const WorkSingle = ({ slug }) => {
       {/* Section - Image */}
       <div className="section section-inner">
         {/* Image */}
-        <div className="m-image-large">
-          <div className="image">
-            {/* TODO: IMAGE */}
-            <div
+        <div className="container">
+          <div className="row">
+            <img
+              src={image}
               className="img js-parallax"
-              style={{
-                backgroundImage:
-                  "url(https://luique.bslthemes.com/wp-content/uploads/2021/11/single4.jpg)",
-              }}
+              alt=""
+              style={{ borderRadius: "3%" }}
             />
           </div>
         </div>
@@ -133,45 +130,6 @@ const WorkSingle = ({ slug }) => {
           </div>
         </div>
       </section>
-      {/* Section - Gallery */}
-      {/* Section - Video */}
-      {/* <div className="section section-inner m-video-large">
-        <div className={`video ${videoToggle ? "active" : ""}`}>
-          <div
-            className="img js-parallax"
-            style={{ backgroundImage: "url(/assets/images/blog9.jpg)" }}
-          />
-          <iframe
-            className="js-video-iframe"
-            src="https://www.youtube.com/embed/Gu6z6kIukgg?showinfo=0&rel=0&autoplay=0"
-          />
-          <div className="play" onClick={() => setVideoToggle(true)} />
-        </div>
-      </div> */}
-      {/* Section - Navigation */}
-      {/* <div className="section section-inner m-page-navigation">
-        <div className="container">
-          <div className="h-titles h-navs">
-            <Link legacyBehavior href="/work-single">
-              <a>
-                <span
-                  className="nav-arrow scrolla-element-anim-1 scroll-animate"
-                  data-animate="active"
-                >
-                  <span>Next Project</span>
-                </span>
-                <span
-                  className="h-title splitting-text-anim-2 scroll-animate"
-                  data-splitting="chars"
-                  data-animate="active"
-                >
-                  <span>Gooir</span>
-                </span>
-              </a>
-            </Link>
-          </div>
-        </div>
-      </div> */}
     </Layout>
   );
 };

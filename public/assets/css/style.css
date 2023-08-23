@@ -2237,7 +2237,7 @@ hr {
 }
 
 .portfolio-template .section.section-inner {
-	padding-bottom: 100px;
+	padding-bottom: 35px;
 }
 
 .section.section-inner.m-archive {
@@ -2251,8 +2251,8 @@ hr {
 }
 
 .section.section-inner.started-heading {
-	padding-top: 220px;
-	padding-bottom: 120px;
+	padding-top: 100px;
+	padding-bottom: 50px;
 	background: linear-gradient(180deg, #FFFFFF 0%, #F0EBE3 100%);
 	z-index: 3;
 }
