@@ -1,37 +1,26 @@
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
 import Link from "next/link";
-import { useState } from "react";
 import Layout from "@layouts/Layout";
 import { useFetchPortfolioBySlug } from "@hooks/useFetchPortfolios";
 import { formatDate } from "@src/utils";
-const WorkSingleISotope = dynamic(
-  () => import("@components/WorkSingleISotope"),
-  {
-    ssr: false,
-  }
-);
-const WorkSingle = () => {
-  const [videoToggle, setVideoToggle] = useState(false);
-  const router = useRouter();
-  const [portfolioData, portfolioLoading] = useFetchPortfolioBySlug(
-    router.query.slug
-  );
+
+export const getServerSideProps = async (context) => {
+  const slug = context.params.slug;
+  return {
+    props: { slug },
+  };
+};
+
+const WorkSingle = ({ slug }) => {
+  const [portfolioData, portfolioLoading] = useFetchPortfolioBySlug(slug);
+  const { title, description, project_date, tech_stack, image, project_link } =
+    portfolioData?.portfolio || {};
+  const categories = portfolioData?.categories || [];
 
   if (portfolioLoading) return <div>Loading...</div>;
 
-  if (!portfolioData || !portfolioData.portfolio)
+  if (!title || !description)
     return <div className="text-center">Data Not Found</div>;
-    
-  const {
-    title,
-    description,
-    project_date,
-    tech_stack,
-    categories,
-    image,
-    project_link,
-  } = portfolioData.portfolio;
+
   return (
     <Layout pageClassName={"portfolio-template dark-skin"}>
       {/* Section Started Heading */}
@@ -51,7 +40,9 @@ const WorkSingle = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span>Branding, Photography</span>
+              <span>
+                {categories.map((category) => category.name).join(", ")}
+              </span>
             </div>
           </div>
         </div>
@@ -70,13 +61,26 @@ const WorkSingle = () => {
                   <div className="details-label">
                     <span>Technology:</span>
                     <strong>
-                      <span>Photoshop, XD</span>
+                      {tech_stack.split(",").map((tech, index, array) => (
+                        <span key={index}>
+                          {tech}
+                          {(index + 1) % 4 === 0 && index < array.length - 1 ? (
+                            <br />
+                          ) : index < array.length - 1 ? (
+                            ", "
+                          ) : (
+                            ""
+                          )}
+                        </span>
+                      ))}
                     </strong>
                   </div>
                   <div className="details-label">
                     <span>Categories:</span>
                     <strong>
-                      <span>Photography, Branding</span>
+                      <span>
+                        {categories.map((category) => category.name).join(", ")}
+                      </span>
                     </strong>
                   </div>
                 </div>
@@ -84,7 +88,7 @@ const WorkSingle = () => {
               <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4 align-right">
                 <a
                   target="_blank"
-                  href="https://bslthemes.com"
+                  href={project_link}
                   className="btn scrolla-element-anim-1 scroll-animate"
                   data-animate="active"
                 >
@@ -100,6 +104,7 @@ const WorkSingle = () => {
         {/* Image */}
         <div className="m-image-large">
           <div className="image">
+            {/* TODO: IMAGE */}
             <div
               className="img js-parallax"
               style={{
@@ -120,54 +125,17 @@ const WorkSingle = () => {
               </div>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div className="post-content">{description}</div>
+              <div
+                className="post-content"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
             </div>
           </div>
         </div>
       </section>
       {/* Section - Gallery */}
-      <div className="section section-inner">
-        <div className="container">
-          {/* Section Gallery */}
-          <WorkSingleISotope />
-        </div>
-      </div>
-      {/* Section - Description */}
-      <section className="section section-inner">
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div className="post-content">
-                <h4>Conclusion</h4>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <div className="post-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using ‘Content
-                  here, content here’, making it look like readable English.
-                </p>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-              <div className="post-content">
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using ‘Content
-                  here, content here’, making it look like readable English.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* Section - Video */}
-      <div className="section section-inner m-video-large">
+      {/* <div className="section section-inner m-video-large">
         <div className={`video ${videoToggle ? "active" : ""}`}>
           <div
             className="img js-parallax"
@@ -179,9 +147,9 @@ const WorkSingle = () => {
           />
           <div className="play" onClick={() => setVideoToggle(true)} />
         </div>
-      </div>
+      </div> */}
       {/* Section - Navigation */}
-      <div className="section section-inner m-page-navigation">
+      {/* <div className="section section-inner m-page-navigation">
         <div className="container">
           <div className="h-titles h-navs">
             <Link legacyBehavior href="/work-single">
@@ -203,7 +171,7 @@ const WorkSingle = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 };
