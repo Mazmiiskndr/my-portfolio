@@ -10,6 +10,13 @@ import { AboutDataContext } from "@context/AboutDataContext";
 import Footer from "./Footer";
 import Header from "./Header";
 import LoadingBar from "@components/LoadingBar";
+import { motion, AnimatePresence } from "framer-motion";
+
+const fade = {
+  initial: { opacity: 0 },
+  in: { opacity: 1, transition: { duration: 1 } }, // durasi animasi masuk dalam detik
+  out: { opacity: 0, transition: { duration: 1 } }, // durasi animasi keluar dalam detik
+};
 
 const Layout = ({ children, pageClassName }) => {
   // Fetch about data using custom hook
@@ -35,18 +42,22 @@ const Layout = ({ children, pageClassName }) => {
 
   return (
     <React.StrictMode>
-      <AboutDataContext.Provider value={aboutData}>
-        <LoadingBar />
-        <div className="container-page">
-          <Header />
-          {/* Wrapper */}
-          <div className="wrapper">{children}</div>
-          {/* Footer */}
-          <Footer />
-        </div>
-        {/* cursor */}
-        <div className="cursor" />
-      </AboutDataContext.Provider>
+      <AnimatePresence mode="wait">
+        <motion.div initial="initial" animate="in" exit="out" variants={fade}>
+          <AboutDataContext.Provider value={aboutData}>
+            <LoadingBar />
+            <div className="container-page">
+              <Header />
+              {/* Wrapper */}
+              <div className="wrapper">{children}</div>
+              {/* Footer */}
+              <Footer />
+            </div>
+            {/* cursor */}
+            <div className="cursor" />
+          </AboutDataContext.Provider>
+        </motion.div>
+      </AnimatePresence>
     </React.StrictMode>
   );
 };

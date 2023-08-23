@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { linkClick, toggleMenu } from "../utils";
 import { useAboutData } from "@context/AboutDataContext";
 
-const Header = ({ aboutLoading }) => {
+const Header = () => {
   const aboutData = useAboutData();
 
   const { github, instagram, facebook, email, whatsapp } = aboutData[0] || {};
@@ -20,10 +20,6 @@ const Header = ({ aboutLoading }) => {
 
   const [pageToggle, setPageToggle] = useState(false);
 
-  if (aboutLoading) return <div>Loading...</div>;
-
-  if (!github || !instagram || !facebook || !email || !whatsapp)
-    return <div className="text-center">Loading...</div>;
 
   return (
     <Fragment>
