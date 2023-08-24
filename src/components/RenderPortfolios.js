@@ -11,7 +11,7 @@ export const RenderPortfolios = ({ portfoliosData, portfoliosLoading }) => {
 
   // Display message if there is no data
   if (portfoliosData.length === 0)
-    return <div>No Category Portfolios Data Available</div>;
+    return <div className="text-center">No Portfolios Data Available</div>;
 
   // Render each portfolio
   return portfoliosData.map((portfolio) => {

@@ -83,7 +83,7 @@ export default function SkillsSection() {
                   </React.Fragment>
                 ))
               ) : (
-                <div>No Skills Data Available</div>
+                <div className="text-center">No Skills Data Available</div>
               )}
             </div>
           )}
