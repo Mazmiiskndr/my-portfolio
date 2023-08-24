@@ -8,12 +8,6 @@ export default function ContactSection({ aboutLoading }) {
   // Using a custom hook to fetch about data
   const aboutData = useAboutData();
 
-  // Display a loading message if the data is still being fetched
-  if (aboutLoading) return <div>Loading...</div>;
-
-  // Destructure the address, email, and phone from the first object in the aboutData array
-  const { address, email, phone } = aboutData[0] || {};
-
   // State to manage success or error messages
   const [messageStatus, setMessageStatus] = useState(null);
 
@@ -21,6 +15,12 @@ export default function ContactSection({ aboutLoading }) {
   const [validationErrors, setValidationErrors] = useState({});
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Display a loading message if the data is still being fetched
+  if (aboutLoading) return <div>Loading...</div>;
+
+  // Destructure the address, email, and phone from the first object in the aboutData array
+  const { address, email, phone } = aboutData[0] || {};
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
