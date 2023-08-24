@@ -35,10 +35,10 @@ export const postData = async (endpoint, data) => {
     const response = await api.post(`/${endpoint}`, data);
     return response.data;
   } catch (error) {
-    console.error(
-      `An error occurred while posting data to ${endpoint}:`,
-      error
-    );
+    // console.error(
+    //   `An error occurred while posting data to ${endpoint}:`,
+    //   error
+    // );
     throw error;
   }
 };

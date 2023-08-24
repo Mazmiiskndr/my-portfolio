@@ -45,7 +45,6 @@ export default function ContactSection({ aboutLoading }) {
     // Post the data to the "contact" endpoint
     postData("contact", data)
       .then((response) => {
-        console.log(response); // Log the response
         // Handle the response as needed
         // Display a success message if the submission is successful
         setMessageStatus("Thanks, your message is sent successfully.");
