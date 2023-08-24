@@ -31,6 +31,7 @@ export const fetchData = async (endpoint, params = null) => {
  */
 export const postData = async (endpoint, data) => {
   try {
+    console.log(data);
     const response = await api.post(`/${endpoint}`, data);
     return response.data;
   } catch (error) {
@@ -38,6 +39,6 @@ export const postData = async (endpoint, data) => {
       `An error occurred while posting data to ${endpoint}:`,
       error
     );
-    return null;
+    throw error;
   }
 };
