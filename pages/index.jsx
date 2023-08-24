@@ -5,7 +5,6 @@ import HeroStarted from "@components/HeroStarted";
 import ContactSection from "@components/ContactSection";
 import ServicesSection from "@components/ServicesSection";
 import SkillsSection from "@components/SkillsSection";
-import BlogSection from "@components/BlogSection";
 const PortfolioIsotope = dynamic(() => import("@components/PortfolioIsotope"), {
   ssr: false,
 });
@@ -57,9 +56,6 @@ const Index = () => {
 
       {/* Section - Resume */}
       <Resume />
-      {/* TODO: */}
-      {/* Section - Blog */}
-      {/* <BlogSection/>   */}
       {/* Section - Contacts */}
       <ContactSection /> 
     </Layout>

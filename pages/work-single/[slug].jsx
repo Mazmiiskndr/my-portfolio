@@ -11,12 +11,10 @@ export const getServerSideProps = async (context) => {
 };
 
 const WorkSingle = ({ slug }) => {
-  const [portfolioData, portfolioLoading] = useFetchPortfolioBySlug(slug);
+  const [portfolioData] = useFetchPortfolioBySlug(slug);
   const { title, description, project_date, tech_stack, image, project_link } =
     portfolioData?.portfolio || {};
   const categories = portfolioData?.categories || [];
-
-  if (portfolioLoading) return <div>Loading...</div>;
 
   if (!title || !description)
     return <div className="text-center">Data Not Found</div>;

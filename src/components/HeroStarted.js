@@ -14,6 +14,8 @@ export default function HeroStarted({ aboutLoading }) {
     email,
     whatsapp,
     resume,
+    year_of_experience,
+    complete_projects,
     description,
   } = aboutData[0] || {};
 
@@ -115,14 +117,14 @@ export default function HeroStarted({ aboutLoading }) {
                 <ul>
                   <li>
                     <span className="num">
-                      4 <strong>+</strong>
+                      {year_of_experience} <strong>+</strong>
                     </span>
                     <span className="value">
                       Years of <strong>Experience</strong>
                     </span>
                   </li>
                   <li>
-                    <span className="num">330</span>
+                    <span className="num">{complete_projects}</span>
                     <span className="value">
                       Completed <strong>Projects</strong>
                     </span>

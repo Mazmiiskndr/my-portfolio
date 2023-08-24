@@ -9,11 +9,7 @@ export default function BlogSection() {
   });
   const renderBlogs = useMemo(() => {
     // Display loading if still loading
-    if (blogsLoading) return <div>Loading...</div>;
-
-    // Display message if there is no data
-    if (blogsData.length === 0)
-      return <div>No Category Blogs Data Available</div>;
+    if (blogsLoading) return <div className="text-center">Loading...</div>;
 
     // Render each blog
     return blogsData.map((blog) => {
