@@ -106,7 +106,9 @@ const WorkSingle = ({ slug }) => {
         <div className="container">
           <div className="row">
             <img
-              src={image}
+              src={`/${image}`}
+              loading="lazy"
+              decoding="async"
               className="img js-parallax"
               alt=""
               style={{ borderRadius: "3%" }}
