@@ -2,6 +2,7 @@ import Layout from "@layouts/Layout";
 import { useFetchPortfolioBySlug } from "@hooks/useFetchPortfolios";
 import { formatDate } from "@src/utils";
 import Head from "next/head";
+const ASSETS_PATH = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
 export const getServerSideProps = async (context) => {
   const slug = context.params.slug;
@@ -106,7 +107,7 @@ const WorkSingle = ({ slug }) => {
         <div className="container">
           <div className="row">
             <img
-              src={`/${image}`}
+              src={ASSETS_PATH + image}
               loading="lazy"
               decoding="async"
               className="img js-parallax"
@@ -138,7 +139,3 @@ const WorkSingle = ({ slug }) => {
   );
 };
 export default WorkSingle;
-
-
-
-

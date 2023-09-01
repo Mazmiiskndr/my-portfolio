@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { truncateText, truncateHtmlText } from "../utils";
-
+const ASSETS_PATH = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 /**
  * Renders the portfolios with loading and no data handling
  */
@@ -38,7 +38,7 @@ export const RenderPortfolios = ({ portfoliosData, portfoliosLoading }) => {
                   <img
                     loading="lazy"
                     decoding="async"
-                    src={portfolio.image}
+                    src={ASSETS_PATH + portfolio.image}
                     alt={portfolio.title}
                   />
                   <span className="overlay" />
