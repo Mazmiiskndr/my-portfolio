@@ -1615,7 +1615,7 @@ hr {
 	position: relative;
 	margin-right: 30px;
 	float: left;
-	width: 121px;
+	width: 60px;
 	font-size: 0;
 }
 
@@ -2237,7 +2237,7 @@ hr {
 }
 
 .portfolio-template .section.section-inner {
-	padding-bottom: 100px;
+	padding-bottom: 35px;
 }
 
 .section.section-inner.m-archive {
@@ -2251,8 +2251,8 @@ hr {
 }
 
 .section.section-inner.started-heading {
-	padding-top: 220px;
-	padding-bottom: 120px;
+	padding-top: 100px;
+	padding-bottom: 50px;
 	background: linear-gradient(180deg, #FFFFFF 0%, #F0EBE3 100%);
 	z-index: 3;
 }
@@ -2371,7 +2371,7 @@ hr {
 }
 
 .section.section-inner.started-heading .m-titles .m-title {
-	font-size: 54px;
+	font-size: 35px;
 }
 
 .single-post .section.section-inner.started-heading .m-titles .m-title {
@@ -2490,7 +2490,7 @@ hr {
 }
 
 .section.hero-started .content {
-	padding-top: 40px;
+	padding-top: 60px;
 	position: relative;
 }
 
@@ -2511,7 +2511,7 @@ hr {
 	line-height: 1.2;
 	color: #FFF;
 	font-weight: 700;
-	margin: 15px 0 0 0;
+	margin: 0px 0 0 -6px;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 	text-shadow: 2px 2px #000, -2px 2px #000, 2px -2px #000, -2px -2px #000, 5px 5px 0px rgba(0, 0, 0, 0.2);
@@ -2533,7 +2533,7 @@ hr {
 }
 
 .section.hero-started .description {
-	padding: 40px 0 40px 0;
+	padding: 10px 0 30px 0;
 	font-size: 18px;
 	max-width: 520px;
 }
@@ -3687,7 +3687,7 @@ hr {
 .comment-respond label {
 	padding: 0;
 	display: block;
-	text-indent: 30px;
+	text-indent: 20px;
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 700;

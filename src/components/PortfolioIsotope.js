@@ -1,37 +1,79 @@
 import Isotope from "isotope-layout";
 import Link from "next/link";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { Fragment, useLayoutEffect, useRef, useState, useMemo } from "react";
+import { useFetchPortfolios } from "@hooks/useFetchPortfolios";
+import { RenderPortfolios } from "./RenderPortfolios";
+import { RenderCategoryPortfolios } from "./RenderCategoryPortfolios";
+import { useFetchCategoryPortfolios } from "@hooks/useFetchCategoryPortfolios";
+
 const PortfolioIsotope = ({ noViewMore }) => {
-  // Isotope
+  const fetchOptions = noViewMore ? {} : { limit: 6 };
+  const [portfoliosData, portfoliosLoading] = useFetchPortfolios(fetchOptions);
+
+  // Fetching category data and loading status
+  const [categoryPortfoliosData, categoryPortfoliosLoading] =
+    useFetchCategoryPortfolios({ limit: 4 });
+
+  // Reference to control Isotope
   const isotope = useRef();
+
+  // State to control filter key
   const [filterKey, setFilterKey] = useState("*");
-  useEffect(() => {
+
+  // Handler to change filter key
+  const handleFilterKeyChange = (key) => () => setFilterKey(key);
+
+  // Function to set the active button class
+  const activeBtn = (value) => (value === filterKey ? "active" : "");
+
+  // Render the portfolios with loading and no data handling
+  const renderPortfolios = useMemo(
+    () => (
+      <RenderPortfolios
+        portfoliosData={portfoliosData}
+        portfoliosLoading={portfoliosLoading}
+      />
+    ),
+    [portfoliosLoading, portfoliosData]
+  );
+
+  // Render the categories portfolios with loading and no data handling
+  const renderCategoryPortfolios = useMemo(
+    () => (
+      <RenderCategoryPortfolios
+        categoryPortfoliosData={categoryPortfoliosData}
+        categoryPortfoliosLoading={categoryPortfoliosLoading}
+        activeBtn={activeBtn}
+        handleFilterKeyChange={handleFilterKeyChange}
+        filterKey={filterKey}
+      />
+    ),
+    [categoryPortfoliosLoading, categoryPortfoliosData, filterKey]
+  );
+
+  // Side effect to initialize or update Isotope
+  useLayoutEffect(() => {
+    if (isotope.current) {
+      isotope.current.destroy();
+    }
     isotope.current = new Isotope(".works-items", {
       itemSelector: ".works-col",
-      //    layoutMode: "fitRows",
       percentPosition: true,
-      masonry: {
-        columnWidth: ".works-col",
-      },
-      animationOptions: {
-        duration: 750,
-        easing: "linear",
-        queue: false,
-      },
+      masonry: { columnWidth: ".works-col" },
+      animationOptions: { duration: 750, easing: "linear", queue: false },
     });
-    return () => isotope.current.destroy();
-  });
-  useEffect(() => {
+    return () => isotope.current.destroy(); // Clean up Isotope when unmounting
+  }, [portfoliosData]); // Rerun effect when portfoliosData changes
+
+  // Side effect to set filter on filterKey change
+  useLayoutEffect(() => {
     if (isotope.current) {
       filterKey === "*"
-        ? isotope.current.arrange({ filter: `*` })
-        : isotope.current.arrange({ filter: `.${filterKey}` });
+        ? isotope.current.arrange({ filter: `*` }) // Filter all if "*"
+        : isotope.current.arrange({ filter: `.${filterKey}` }); // Or filter based on filterKey
     }
   }, [filterKey]);
-  const handleFilterKeyChange = (key) => () => {
-    setFilterKey(key);
-  };
-  const activeBtn = (value) => (value === filterKey ? "active" : "");
+
   return (
     <Fragment>
       <div className="works-box">
@@ -46,314 +88,10 @@ const PortfolioIsotope = ({ noViewMore }) => {
           >
             All
           </a>
-          <a
-            className={`c-pointer lui-subtitle ${activeBtn(
-              "sorting-ui-ux-design"
-            )}`}
-            onClick={handleFilterKeyChange("sorting-ui-ux-design")}
-            data-href=".sorting-ui-ux-design"
-          >
-            UI UX Design
-          </a>
-          <a
-            className={`c-pointer lui-subtitle ${activeBtn("sorting-photo")}`}
-            onClick={handleFilterKeyChange("sorting-photo")}
-            data-href=".sorting-photo"
-          >
-            Photography
-          </a>
-          <a
-            className={`c-pointer lui-subtitle ${activeBtn(
-              "sorting-development"
-            )}`}
-            onClick={handleFilterKeyChange("sorting-development")}
-            data-href=".sorting-development"
-          >
-            Development
-          </a>
-          <a
-            className={`c-pointer lui-subtitle ${activeBtn(
-              "sorting-branding"
-            )}`}
-            onClick={handleFilterKeyChange("sorting-branding")}
-            data-href=".sorting-branding"
-          >
-            Branding
-          </a>
+          {renderCategoryPortfolios}
         </div>
         <div className="works-items works-masonry-items row">
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-branding sorting-photo ">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/work4.jpeg"
-                        alt="Zorro"
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <span className="category"> Branding, Photography </span>
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>Zorro</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore.
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">See project</a>
-                </Link>
-              </div>
-              <img
-                className="bg-img"
-                src="assets/images/pat-2.png"
-                alt="Pat 2"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-branding sorting-ui-ux-design ">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/work2.jpeg"
-                        alt="Gooir"
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <span className="category"> Branding, UI UX Design </span>
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>Gooir</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore.
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">See project</a>
-                </Link>
-              </div>
-              <img
-                className="bg-img"
-                src="assets/images/pat-2.png"
-                alt="Pat 2"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-development sorting-ui-ux-design ">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single/megalos-hotspot">
-                    <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/megalos-split.jpg"
-                        alt="Explore"
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <span className="category"> Development, UI UX Design </span>
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>Megalos - Hotspot Management System</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    Megalos is developed using the Laravel 9 tech stack,
-                    Livewire version 2, and implements the repository pattern
-                    paradigm. The project is also integrated with Mikrotik API
-                    and freeRadius.
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">See project</a>
-                </Link>
-              </div>
-              <img
-                className="bg-img"
-                src="assets/images/pat-2.png"
-                alt="Pat 2"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-branding sorting-photo ">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/work1.jpeg"
-                        alt="Mozar"
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <span className="category"> Branding, Photography </span>
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>Mozar</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore.
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">See project</a>
-                </Link>
-              </div>
-              <img
-                className="bg-img"
-                src="assets/images/pat-2.png"
-                alt="Pat 2"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-development sorting-ui-ux-design ">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/single8.jpg"
-                        alt="Stay Fit"
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <span className="category"> Development, UI UX Design </span>
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>Stay Fit</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore.
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">See project</a>
-                </Link>
-              </div>
-              <img
-                className="bg-img"
-                src="assets/images/pat-2.png"
-                alt="Pat 2"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div className="works-col col-xs-12 col-sm-12 col-md-12 col-lg-12 sorting-development sorting-photo ">
-            <div
-              className="works-item scrolla-element-anim-1 scroll-animate"
-              data-animate="active"
-            >
-              <div className="image">
-                <div className="img">
-                  <Link legacyBehavior href="/work-single">
-                    <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="/assets/images/single6.jpg"
-                        alt="Kana"
-                      />
-                      <span className="overlay" />
-                    </a>
-                  </Link>
-                </div>
-              </div>
-              <div className="desc">
-                <span className="category"> Development, Photography </span>
-                <h5 className="name">
-                  <Link legacyBehavior href="/work-single">
-                    <a>Kana</a>
-                  </Link>
-                </h5>
-                <div className="text">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore.
-                  </p>
-                </div>
-                <Link legacyBehavior href="/work-single">
-                  <a className="lnk">See project</a>
-                </Link>
-              </div>
-              <img
-                className="bg-img"
-                src="assets/images/pat-2.png"
-                alt="Pat 2"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          {renderPortfolios}
         </div>
         {!noViewMore && (
           <div className="load-more-link">
@@ -371,4 +109,5 @@ const PortfolioIsotope = ({ noViewMore }) => {
     </Fragment>
   );
 };
+
 export default PortfolioIsotope;

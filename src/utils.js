@@ -138,3 +138,48 @@ export const jarallaxAnimation = () => {
     type: "scroll",
   });
 };
+
+export const truncateText = (text, length) => {
+  if (text.length > length) {
+    return text.substring(0, length) + "...";
+  } else {
+    return text;
+  }
+};
+
+export const truncateHtmlText = (html, length) => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+
+  // Ambil elemen body atau elemen lain yang ingin Anda potong teksnya
+  const bodyText = doc.body.innerText;
+
+  // Potong teks sesuai panjang yang diinginkan
+  const truncatedText = truncateText(bodyText, length);
+
+  // Anda bisa menggantikan innerText atau innerHTML elemen tertentu dengan teks yang telah dipotong
+  doc.body.innerText = truncatedText;
+
+  // Kembalikan HTML yang telah dimodifikasi sebagai string
+  return doc.body.innerHTML;
+};
+
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const months = [
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER",
+  ];
+  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+};
+

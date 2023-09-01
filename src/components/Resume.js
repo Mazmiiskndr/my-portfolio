@@ -98,7 +98,7 @@ export default function Resume() {
                           </div>
                           <div className="text">
                             <div>
-                              <p>{education.dec}</p>
+                              <p>{education.description}</p>
                             </div>
                           </div>
                         </div>
@@ -119,45 +119,51 @@ export default function Resume() {
                   <span> Experience </span>
                 </h5>
                 <div className="history-items">
-                  {experienceData.map((experience) => (
-                    <div
-                      className={`history-item lui-collapse-item scroll-animate ${
-                        experience.id == experienceToggle ? "opened" : ""
-                      }`}
-                      data-animate="active"
-                      key={experience.id}
-                    >
-                      <h6
-                        className={`name lui-collapse-btn ${
-                          experienceToggle == experience.id ? " active" : ""
+                  {educationData.length > 0 ? (
+                    experienceData.map((experience) => (
+                      <div
+                        className={`history-item lui-collapse-item scroll-animate ${
+                          experience.id == experienceToggle ? "opened" : ""
                         }`}
-                        onClick={() => setExperienceToggle(experience.id)}
+                        data-animate="active"
+                        key={experience.id}
                       >
-                        <span> {experience.title} </span>
-                      </h6>
-                      <div className="history-content">
-                        <div className="subname">
-                          <span> {experience.subtitle} </span>
-                        </div>
-                        <div className="date lui-subtitle">
-                          <span>
-                            {" "}
-                            {experience.start_date} -{" "}
-                            {experience.end_date ? (
-                              experience.end_date
-                            ) : (
-                              <b>Present</b>
-                            )}
-                          </span>
-                        </div>
-                        <div className="text">
-                          <div>
-                            <p>{experience.description}</p>
+                        <h6
+                          className={`name lui-collapse-btn ${
+                            experienceToggle == experience.id ? " active" : ""
+                          }`}
+                          onClick={() => setExperienceToggle(experience.id)}
+                        >
+                          <span> {experience.title} </span>
+                        </h6>
+                        <div className="history-content">
+                          <div className="subname">
+                            <span> {experience.subtitle} </span>
+                          </div>
+                          <div className="date lui-subtitle">
+                            <span>
+                              {" "}
+                              {experience.start_date} -{" "}
+                              {experience.end_date ? (
+                                experience.end_date
+                              ) : (
+                                <b>Present</b>
+                              )}
+                            </span>
+                          </div>
+                          <div className="text">
+                            <div>
+                              <p>{experience.description}</p>
+                            </div>
                           </div>
                         </div>
                       </div>
+                    ))
+                  ) : (
+                    <div className="history-item">
+                      No Experience Data Available
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>

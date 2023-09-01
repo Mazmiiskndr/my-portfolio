@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { linkClick, toggleMenu } from "../utils";
+import { useAboutData } from "@context/AboutDataContext";
 
 const Header = () => {
+  const aboutData = useAboutData();
+
+  const { github, instagram, facebook, email, whatsapp } = aboutData[0] || {};
+
   const [day, setDay] = useState(true);
   useEffect(() => {
     if (day) {
@@ -15,28 +20,29 @@ const Header = () => {
 
   const [pageToggle, setPageToggle] = useState(false);
 
+
   return (
     <Fragment>
       {/* Header */}
       <header className="header">
         <div className="header__builder">
           <div className="row">
-              {/* logo */}
-            {/* <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {/* logo */}
+            <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4">
               <div className="logo">
                 <Link href="/" legacyBehavior>
                   <a>
                     <img
-                      width={228}
+                      width={60}
                       height={38}
-                      src="assets/images/logo2.png"
+                      src="/assets/images/favicon/logo-azmi-2.png"
                       alt=""
                     />
                   </a>
                 </Link>
               </div>
-            </div> */}
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 align-right">
+            </div>
+            <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8 align-right">
               {/* switcher btn */}
               <a
                 href="#"
@@ -143,27 +149,7 @@ const Header = () => {
                                 Resume
                               </a>
                             </li>
-                            <li className="menu-item">
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                href="/#testimonials-section"
-                                onClick={() => linkClick()}
-                              >
-                                Testimonials
-                              </a>
-                            </li>
-                            <li className="menu-item">
-                              <a
-                                className="splitting-text-anim-2"
-                                data-splitting="chars"
-                                href="/#pricing-section"
-                                onClick={() => linkClick()}
-                              >
-                                Pricing
-                              </a>
-                            </li>
-                            <li className="menu-item">
+                            {/* <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
@@ -172,7 +158,7 @@ const Header = () => {
                               >
                                 Blog
                               </a>
-                            </li>
+                            </li> */}
                             <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
@@ -204,7 +190,7 @@ const Header = () => {
                                   display: `${pageToggle ? "block" : "none"}`,
                                 }}
                               >
-                                <li className="menu-item">
+                                {/* <li className="menu-item">
                                   <Link legacyBehavior href="/works-list">
                                     <a
                                       className="splitting-text-anim-1"
@@ -213,18 +199,18 @@ const Header = () => {
                                       Works (List)
                                     </a>
                                   </Link>
-                                </li>
+                                </li> */}
                                 <li className="menu-item">
                                   <Link legacyBehavior href="/works">
                                     <a
                                       className="splitting-text-anim-1"
                                       data-splitting="chars"
                                     >
-                                      Works (Grid)
+                                      Works
                                     </a>
                                   </Link>
                                 </li>
-                                <li className="menu-item">
+                                {/* <li className="menu-item">
                                   <Link legacyBehavior href="/work-single">
                                     <a
                                       className="splitting-text-anim-1"
@@ -253,36 +239,34 @@ const Header = () => {
                                       Single Post
                                     </a>
                                   </Link>
-                                </li>
+                                </li> */}
                               </ul>
                             </li>
                           </ul>
                         </div>
                         {/* social */}
                         <div className="menu-social-links">
-                          <a
-                            href="http://dribbble.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="dribbble"
-                          >
-                            <i className="fab fa-dribbble" />
+                          <a target="_blank" rel="nofollow" href={github}>
+                            <i aria-hidden="true" className="fab fa-github" />
+                          </a>
+                          <a target="_blank" rel="nofollow" href={instagram}>
+                            <i
+                              aria-hidden="true"
+                              className="fab fa-instagram"
+                            />
+                          </a>
+                          <a target="_blank" rel="nofollow" href={facebook}>
+                            <i aria-hidden="true" className="fab fa-facebook" />
                           </a>
                           <a
-                            href="http://twitter.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="twitter"
+                            target="_blank"
+                            rel="nofollow"
+                            href={`mailto:${email}`}
                           >
-                            <i className="fab fa-twitter" />
+                            <i aria-hidden="true" className="fas fa-envelope" />
                           </a>
-                          <a
-                            href="http://behance.com"
-                            target="blank"
-                            className="scrolla-element-anim-1"
-                            title="behance"
-                          >
-                            <i className="fab fa-behance" />
+                          <a target="_blank" rel="nofollow" href={whatsapp}>
+                            <i aria-hidden="true" className="fab fa-whatsapp" />
                           </a>
                         </div>
                         <div className="v-line-block">
