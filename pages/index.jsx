@@ -14,11 +14,13 @@ const Index = () => {
       {/* Section - Hero Started */}
       <HeroStarted />
       {/* Section - Services */}
-      <ServicesSection/>
+      <ServicesSection />
       {/* Section - Skills */}
-      <SkillsSection/>
+      <SkillsSection />
+      {/* Section - Resume */}
+      <Resume />
       {/* Section - Works */}
-      <section className="lui-section lui-gradient-top" id="works-section">
+      <section className="lui-section lui-gradient-bottom" id="works-section">
         {/* Heading */}
         <div className="lui-heading">
           <div className="container">
@@ -54,10 +56,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section - Resume */}
-      <Resume />
       {/* Section - Contacts */}
-      <ContactSection /> 
+      <ContactSection />
     </Layout>
   );
 };

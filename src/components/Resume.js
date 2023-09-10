@@ -23,7 +23,7 @@ export default function Resume() {
   }, [experienceData]);
 
   return (
-    <section className="lui-section lui-gradient-bottom" id="resume-section">
+    <section className="lui-section lui-gradient-top" id="resume-section">
       {/* Heading */}
       <div className="lui-heading">
         <div className="container">

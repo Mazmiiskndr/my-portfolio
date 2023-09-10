@@ -7,7 +7,8 @@ import SocialLink from "@components/SocialLink";
 const Header = () => {
   const aboutData = useAboutData();
 
-  const { github, instagram, facebook, email, whatsapp, linkedin } = aboutData[0] || {};
+  const { github, instagram, facebook, email, whatsapp, linkedin } =
+    aboutData[0] || {};
 
   const [day, setDay] = useState(true);
   useEffect(() => {
@@ -20,7 +21,6 @@ const Header = () => {
   }, [day]);
 
   const [pageToggle, setPageToggle] = useState(false);
-
 
   return (
     <Fragment>
@@ -134,20 +134,20 @@ const Header = () => {
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
-                                href="/#works-section"
+                                href="/#resume-section"
                                 onClick={() => linkClick()}
                               >
-                                Works
+                                Resume
                               </a>
                             </li>
                             <li className="menu-item">
                               <a
                                 className="splitting-text-anim-2"
                                 data-splitting="chars"
-                                href="/#resume-section"
+                                href="/#works-section"
                                 onClick={() => linkClick()}
                               >
-                                Resume
+                                Works
                               </a>
                             </li>
                             {/* <li className="menu-item">
