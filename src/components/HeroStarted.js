@@ -1,4 +1,5 @@
 import { useAboutData } from "@context/AboutDataContext";
+import SocialLink from "./SocialLink";
 
 export default function HeroStarted({ aboutLoading }) {
   const aboutData = useAboutData();
@@ -13,6 +14,7 @@ export default function HeroStarted({ aboutLoading }) {
     facebook,
     email,
     whatsapp,
+    linkedin,
     resume,
     year_of_experience,
     complete_projects,
@@ -60,21 +62,15 @@ export default function HeroStarted({ aboutLoading }) {
                   <p>{description}</p>
                 </div>
                 <div className="social-links">
-                  <a target="_blank" rel="nofollow" href={github}>
-                    <i aria-hidden="true" className="fab fa-github" />
-                  </a>
-                  <a target="_blank" rel="nofollow" href={instagram}>
-                    <i aria-hidden="true" className="fab fa-instagram" />
-                  </a>
-                  <a target="_blank" rel="nofollow" href={facebook}>
-                    <i aria-hidden="true" className="fab fa-facebook" />
-                  </a>
-                  <a target="_blank" rel="nofollow" href={`mailto:${email}`}>
-                    <i aria-hidden="true" className="fas fa-envelope" />
-                  </a>
-                  <a target="_blank" rel="nofollow" href={whatsapp}>
-                    <i aria-hidden="true" className="fab fa-whatsapp" />
-                  </a>
+                  <SocialLink href={github} className="fab fa-github" />
+                  <SocialLink href={instagram} className="fab fa-instagram" />
+                  <SocialLink href={facebook} className="fab fa-facebook" />
+                  <SocialLink
+                    href={`mailto:${email}`}
+                    className="fas fa-envelope"
+                  />
+                  <SocialLink href={whatsapp} className="fab fa-whatsapp" />
+                  <SocialLink href={linkedin} className="fab fa-linkedin" />
                 </div>
               </div>
               <div className="bts">

@@ -2,11 +2,12 @@ import Link from "next/link";
 import { Fragment, useEffect, useState } from "react";
 import { linkClick, toggleMenu } from "../utils";
 import { useAboutData } from "@context/AboutDataContext";
+import SocialLink from "@components/SocialLink";
 
 const Header = () => {
   const aboutData = useAboutData();
 
-  const { github, instagram, facebook, email, whatsapp } = aboutData[0] || {};
+  const { github, instagram, facebook, email, whatsapp, linkedin } = aboutData[0] || {};
 
   const [day, setDay] = useState(true);
   useEffect(() => {
@@ -246,28 +247,27 @@ const Header = () => {
                         </div>
                         {/* social */}
                         <div className="menu-social-links">
-                          <a target="_blank" rel="nofollow" href={github}>
-                            <i aria-hidden="true" className="fab fa-github" />
-                          </a>
-                          <a target="_blank" rel="nofollow" href={instagram}>
-                            <i
-                              aria-hidden="true"
-                              className="fab fa-instagram"
-                            />
-                          </a>
-                          <a target="_blank" rel="nofollow" href={facebook}>
-                            <i aria-hidden="true" className="fab fa-facebook" />
-                          </a>
-                          <a
-                            target="_blank"
-                            rel="nofollow"
+                          <SocialLink href={github} className="fab fa-github" />
+                          <SocialLink
+                            href={instagram}
+                            className="fab fa-instagram"
+                          />
+                          <SocialLink
+                            href={facebook}
+                            className="fab fa-facebook"
+                          />
+                          <SocialLink
                             href={`mailto:${email}`}
-                          >
-                            <i aria-hidden="true" className="fas fa-envelope" />
-                          </a>
-                          <a target="_blank" rel="nofollow" href={whatsapp}>
-                            <i aria-hidden="true" className="fab fa-whatsapp" />
-                          </a>
+                            className="fas fa-envelope"
+                          />
+                          <SocialLink
+                            href={whatsapp}
+                            className="fab fa-whatsapp"
+                          />
+                          <SocialLink
+                            href={linkedin}
+                            className="fab fa-linkedin"
+                          />
                         </div>
                         <div className="v-line-block">
                           <span />
