@@ -52,7 +52,7 @@ export default function ServicesSection() {
                       <div className="lui-subtitle">
                         <span> {service.title} </span>
                       </div>
-                      <div className="icon" />
+                      <div className="icon" style={{ marginTop: '-5px' }}/>
                       <h5 className="lui-title">
                         <span> {service.subtitle} </span>
                       </h5>
