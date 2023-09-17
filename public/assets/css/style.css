@@ -3300,11 +3300,12 @@ hr {
 	border: 2px solid #fff;
 	transition: all 0.6s cubic-bezier(0.3, 0, 0.3, 1);
 	-webkit-transition: all 0.6s cubic-bezier(0.3, 0, 0.3, 1);
+	box-shadow: 5px 5px 10px 0px rgb(0 0 0 / 20%);
 }
 
-.pricing-col.center .pricing-item {
+/* .pricing-col.center .pricing-item {
 	border-color: #000;
-}
+} */
 
 .pricing-col .label {
 	display: none;

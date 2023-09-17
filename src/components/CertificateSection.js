@@ -1,7 +1,17 @@
 import Link from "next/link";
+import { useFetchCertificates } from "@hooks/useFetchCertificate";
+const ASSETS_PATH = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
-export default function CertificateSection() {
-    // TODO: SHOW CERTIFICATES BY API
+export default function CertificateSection({ noViewMore }) {
+  const fetchOptions = noViewMore ? {} : { limit: 3 };
+  const [certificatesData, certificatesLoading] =
+    useFetchCertificates(fetchOptions);
+  // Display loading if still loading
+  if (certificatesLoading) return <div>Loading...</div>;
+
+  // Display message if there is no data
+  if (certificatesData.length === 0)
+    return <div className="text-center">No Certificates Data Available</div>;
   return (
     <section className="lui-section lui-gradient-center" id="pricing-section">
       {/* Heading */}
@@ -32,44 +42,55 @@ export default function CertificateSection() {
       <div className="v-line v-line-left">
         <div className="container">
           <div className="pricing-items row">
-            <div className="pricing-col center col-xs-12 col-sm-6 col-md-6 col-lg-4">
-              <div className="label">
-                <span> Developer & Programmer </span>
-              </div>
+            {certificatesData.map((certificate, index) => (
               <div
-                className="pricing-item scrolla-element-anim-1 scroll-animate"
-                data-animate="active"
+                className="pricing-col center col-xs-12 col-sm-6 col-md-6 col-lg-4"
+                key={index}
               >
-                <div className="lui-subtitle" style={{ marginBottom: '20px' }}>
-                  <span> Freelancing </span>
+                <div className="label">
+                  <span> {certificate.title} </span>
                 </div>
-                <div className="image">
-                  <div className="img">
-                    <Link legacyBehavior href={`#`}>
-                      <a>
-                        <img
-                          loading="lazy"
-                          decoding="async"
-                          src={`assets/images/certificate-of-competence-moch-azmi-iskandar.jpg`}
-                          alt={"Certificates"}
-                          style={{ borderRadius: "10px", width: "100%" }}
-                        />
-                        <span className="overlay" />
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-                <a href="#contact-section" className="btn btn-solid">
-                  <span>See My Qualifications</span>
-                </a>
                 <div
-                  className="bg-img"
-                  style={{
-                    backgroundImage: "url(assets/images/pat-2.png)",
-                  }}
-                />
+                  className="pricing-item scrolla-element-anim-1 scroll-animate"
+                  data-animate="active"
+                >
+                  <div
+                    className="lui-subtitle"
+                    style={{ marginBottom: "20px" }}
+                  >
+                    <span> {certificate.subtitle} </span>
+                  </div>
+                  <div className="image">
+                    <div className="img">
+                      <Link legacyBehavior href={`#`}>
+                        <a>
+                          <img
+                            loading="lazy"
+                            decoding="async"
+                            src={ASSETS_PATH + certificate.image}
+                            alt={certificate.title}
+                            style={{ borderRadius: "10px", width: "100%" }}
+                          />
+                          <span className="overlay" />
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+                  <a
+                    href={`/certificate-single/${certificate.slug}`}
+                    className="btn btn-solid"
+                  >
+                    <span>See My Qualifications</span>
+                  </a>
+                  <div
+                    className="bg-img"
+                    style={{
+                      backgroundImage: "url(assets/images/pat-2.png)",
+                    }}
+                  />
+                </div>
               </div>
-            </div>
+            ))}
           </div>
           <div className="lui-bgtitle">
             <span> Pricing </span>
