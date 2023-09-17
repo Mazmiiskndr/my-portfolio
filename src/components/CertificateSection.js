@@ -56,13 +56,18 @@ export default function CertificateSection({ noViewMore }) {
                 >
                   <div
                     className="lui-subtitle"
-                    style={{ marginBottom: "20px" }}
+                    style={{
+                      marginBottom: "20px",
+                      height: "2.4em",
+                      lineHeight: "1.2em",
+                      overflow: "hidden",
+                    }}
                   >
                     <span> {certificate.subtitle} </span>
                   </div>
                   <div className="image">
                     <div className="img">
-                      <Link legacyBehavior href={`#`}>
+                      <Link legacyBehavior href={`/certificate-single/${certificate.slug}`}>
                         <a>
                           <img
                             loading="lazy"
@@ -92,8 +97,20 @@ export default function CertificateSection({ noViewMore }) {
               </div>
             ))}
           </div>
+          {!noViewMore && (
+            <div className="load-more-link" style={{ marginTop: "30px" }}>
+              <Link legacyBehavior href="/works">
+                <a
+                  className="btn scrolla-element-anim-1 scroll-animate"
+                  data-animate="active"
+                >
+                  <span>View More</span>
+                </a>
+              </Link>
+            </div>
+          )}
           <div className="lui-bgtitle">
-            <span> Pricing </span>
+            <span> Certificates </span>
           </div>
         </div>
       </div>
