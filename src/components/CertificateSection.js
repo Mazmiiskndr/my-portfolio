@@ -99,7 +99,7 @@ export default function CertificateSection({ noViewMore }) {
           </div>
           {!noViewMore && (
             <div className="load-more-link" style={{ marginTop: "30px" }}>
-              <Link legacyBehavior href="/works">
+              <Link legacyBehavior href="/certificates">
                 <a
                   className="btn scrolla-element-anim-1 scroll-animate"
                   data-animate="active"
