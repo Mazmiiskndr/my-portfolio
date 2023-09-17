@@ -1,10 +1,35 @@
 import { useAboutData } from "@context/AboutDataContext";
 import SocialLink from "./SocialLink";
+import { motion } from "framer-motion";
+// Variants untuk animasi
+const containerVariants = {
+  hidden: { opacity: 0, y: 75 },
+  visible: { opacity: 1, y: 0 },
+};
+
+// Variants untuk animasi
+const textVariants = {
+  initial: { y: -50, opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { y: 50, opacity: 0 }
+};
+
+// Transisi
+const textTransition = {
+  type: 'spring',
+  stiffness: 100,
+  damping: 15,
+  duration: 1
+};
 
 export default function HeroStarted({ aboutLoading }) {
   const aboutData = useAboutData();
 
-  if (aboutLoading) return <div>Loading...</div>;
+  if (aboutLoading) return (
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      Loading...
+    </motion.div>
+  );
 
   const {
     name,
@@ -22,9 +47,13 @@ export default function HeroStarted({ aboutLoading }) {
   } = aboutData[0] || {};
 
   return (
-    <section
+    <motion.section
       className="lui-section lui-section-hero lui-gradient-top"
       id="started-section"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.5, delay: 0.25 }}
     >
       <div className="container">
         {/* Hero Started */}
@@ -54,12 +83,29 @@ export default function HeroStarted({ aboutLoading }) {
                 </h1>
                 <div className="label lui-subtitle">
                   {" "}
-                  I am <strong>{position}</strong>
+                  I am{" "}
+                  <motion.strong
+                    variants={textVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={textTransition}
+                  >
+                    {position}
+                  </motion.strong>
                 </div>
               </div>
               <div className="description">
                 <div>
-                  <p>{description}</p>
+                  <motion.p
+                    variants={textVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={textTransition}
+                  >
+                    {description}
+                  </motion.p>
                 </div>
                 <div className="social-links">
                   <SocialLink href={github} className="fab fa-github" />
@@ -84,11 +130,15 @@ export default function HeroStarted({ aboutLoading }) {
               </div>
             </div>
             <div className="slide" data-animate="active">
-              <img
+              <motion.img
+                whileHover={{ scale: 1.1 }}
                 loading="lazy"
                 decoding="async"
                 src="assets/images/profile/profile-azmi.png"
                 alt="<b>Moch Azmi</b> Iskandar"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, ease: "easeInOut" }}
               />
               <span className="circle circle-1" />
               <img
@@ -134,6 +184,6 @@ export default function HeroStarted({ aboutLoading }) {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

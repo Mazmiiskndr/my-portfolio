@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useFetchCertificates } from "@hooks/useFetchCertificate";
 const ASSETS_PATH = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
+import { motion } from "framer-motion";
 
 export default function CertificateSection({ noViewMore }) {
   const fetchOptions = noViewMore ? {} : { limit: 3 };
@@ -67,13 +68,20 @@ export default function CertificateSection({ noViewMore }) {
                   </div>
                   <div className="image">
                     <div className="img">
-                      <Link legacyBehavior href={`/certificate-single/${certificate.slug}`}>
+                      <Link
+                        legacyBehavior
+                        href={`/certificate-single/${certificate.slug}`}
+                      >
                         <a>
-                          <img
+                          <motion.img
                             loading="lazy"
                             decoding="async"
                             src={ASSETS_PATH + certificate.image}
                             alt={certificate.title}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                            whileHover={{ scale: 1.05 }}
                             style={{ borderRadius: "10px", width: "100%" }}
                           />
                           <span className="overlay" />
@@ -81,6 +89,7 @@ export default function CertificateSection({ noViewMore }) {
                       </Link>
                     </div>
                   </div>
+                  {/* TODO: DETAIL CERTIFICATE */}
                   <a
                     href={`/certificate-single/${certificate.slug}`}
                     className="btn btn-solid"

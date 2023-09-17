@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { truncateText, truncateHtmlText } from "../utils";
 const ASSETS_PATH = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
+import { motion } from "framer-motion";
+
 /**
  * Renders the portfolios with loading and no data handling
  */
@@ -35,11 +37,14 @@ export const RenderPortfolios = ({ portfoliosData, portfoliosLoading }) => {
             <div className="img">
               <Link legacyBehavior href={`/work-single/${portfolio.slug}`}>
                 <a>
-                  <img
+                  <motion.img
                     loading="lazy"
                     decoding="async"
                     src={ASSETS_PATH + portfolio.image}
                     alt={portfolio.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
                   />
                   <span className="overlay" />
                 </a>

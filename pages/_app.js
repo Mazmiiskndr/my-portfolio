@@ -2,6 +2,8 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import PreLoader from "../src/layouts/PreLoader";
 import "../styles/globals.css";
+import { AnimatePresence } from 'framer-motion';
+
 const App = ({ Component, pageProps }) => {
   const [loader, setLoader] = useState(true);
   useEffect(() => {

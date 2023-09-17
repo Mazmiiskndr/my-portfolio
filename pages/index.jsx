@@ -11,6 +11,7 @@ const PortfolioIsotope = dynamic(() => import("@components/PortfolioIsotope"), {
 });
 const Index = () => {
   return (
+    
     <Layout pageClassName={"home dark-skin"}>
       {/* Section - Hero Started */}
       <HeroStarted />
