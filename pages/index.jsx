@@ -32,7 +32,7 @@ const Index = () => {
                 data-splitting="words"
                 data-animate="active"
               >
-                <span> Portfolio </span>
+                <span> Portfolios </span>
               </h2>
               <div
                 className="m-subtitle splitting-text-anim-1 scroll-animate"
