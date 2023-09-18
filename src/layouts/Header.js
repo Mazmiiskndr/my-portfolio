@@ -211,6 +211,16 @@ const Header = () => {
                                     </a>
                                   </Link>
                                 </li>
+                                <li className="menu-item">
+                                  <Link legacyBehavior href="/certificates">
+                                    <a
+                                      className="splitting-text-anim-1"
+                                      data-splitting="chars"
+                                    >
+                                      Certificates
+                                    </a>
+                                  </Link>
+                                </li>
                                 {/* <li className="menu-item">
                                   <Link legacyBehavior href="/work-single">
                                     <a

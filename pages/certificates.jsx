@@ -1,12 +1,12 @@
 import dynamic from "next/dynamic";
 import Layout from "../src/layouts/Layout";
-const PortfolioIsotope = dynamic(
-  () => import("../src/components/PortfolioIsotope"),
+const CertificateSection = dynamic(
+  () => import("@components/CertificateSection"),
   {
     ssr: false,
   }
 );
-const Works = () => {
+const Certificates = () => {
   return (
     <Layout pageClassName={"dark-skin"}>
       {/* Section Started Heading */}
@@ -19,7 +19,7 @@ const Works = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span> Portfolio </span>
+              <span> Certificate </span>
             </h1>
             <div
               className="m-subtitle splitting-text-anim-1 scroll-animate"
@@ -34,19 +34,16 @@ const Works = () => {
           </div>
         </div>
       </section>
-      {/* Section - Works */}
+      {/* Section - Certificates */}
       <section className="lui-section">
-        {/* Works */}
+        {/* Certificates */}
         <div className="v-line v-line-right v-line-top">
           <div className="container">
-            <PortfolioIsotope noViewMore />
-            <div className="lui-bgtitle">
-              <span> Portfolios </span>
-            </div>
+            <CertificateSection noViewMore />
           </div>
         </div>
       </section>
     </Layout>
   );
 };
-export default Works;
+export default Certificates;
