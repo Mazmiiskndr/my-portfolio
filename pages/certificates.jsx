@@ -19,7 +19,7 @@ const Certificates = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span> Certificate </span>
+              <span> Certificates </span>
             </h1>
             <div
               className="m-subtitle splitting-text-anim-1 scroll-animate"

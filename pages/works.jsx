@@ -19,7 +19,7 @@ const Works = () => {
               data-splitting="words"
               data-animate="active"
             >
-              <span> Portfolio </span>
+              <span> Portfolios </span>
             </h1>
             <div
               className="m-subtitle splitting-text-anim-1 scroll-animate"
