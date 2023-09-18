@@ -18,7 +18,7 @@ const WorkSingle = ({ slug }) => {
   const categories = portfolioData?.categories || [];
 
   if (!title || !description)
-    return <div className="text-center">Data Not Found</div>;
+    return <div className="text-center">Loading..</div>;
 
   return (
     <Layout pageClassName={"portfolio-template dark-skin"}>

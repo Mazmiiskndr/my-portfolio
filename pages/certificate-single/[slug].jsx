@@ -18,7 +18,7 @@ const CertificateSingle = ({ slug }) => {
   const { title, subtitle, image, link, description, created_at } =
     certificateData || {};
   if (!title || !subtitle)
-    return <div className="text-center">Data Not Found</div>;
+    return <div className="text-center">Loading..</div>;
 
   return (
     <Layout pageClassName={"portfolio-template dark-skin"}>
