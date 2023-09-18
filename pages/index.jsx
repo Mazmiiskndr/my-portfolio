@@ -52,7 +52,7 @@ const Index = () => {
           <div className="container">
             <PortfolioIsotope />
             <div className="lui-bgtitle">
-              <span> Portfolio </span>
+              <span> Portfolios </span>
             </div>
           </div>
         </div>
