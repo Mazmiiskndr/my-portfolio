@@ -1,35 +1,27 @@
 import { useAboutData } from "@context/AboutDataContext";
 import SocialLink from "./SocialLink";
 import { motion } from "framer-motion";
-// Variants untuk animasi
+
 const containerVariants = {
   hidden: { opacity: 0, y: 75 },
   visible: { opacity: 1, y: 0 },
 };
 
-// Variants untuk animasi
 const textVariants = {
   initial: { y: -50, opacity: 0 },
   animate: { y: 0, opacity: 1 },
   exit: { y: 50, opacity: 0 }
 };
 
-// Transisi
+
 const textTransition = {
-  type: 'spring',
-  stiffness: 100,
-  damping: 15,
-  duration: 1
+  type: "tween", 
+  ease: "easeInOut",
+  duration: 1,
 };
 
 export default function HeroStarted({ aboutLoading }) {
   const aboutData = useAboutData();
-
-  if (aboutLoading) return (
-    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      Loading...
-    </motion.div>
-  );
 
   const {
     name,
@@ -84,28 +76,36 @@ export default function HeroStarted({ aboutLoading }) {
                 <div className="label lui-subtitle">
                   {" "}
                   I am{" "}
-                  <motion.strong
-                    variants={textVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={textTransition}
-                  >
-                    {position}
-                  </motion.strong>
+                  {position ? (
+                    <motion.strong
+                      variants={textVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={textTransition}
+                    >
+                      {position}
+                    </motion.strong>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
               <div className="description">
                 <div>
-                  <motion.p
-                    variants={textVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={textTransition}
-                  >
-                    {description}
-                  </motion.p>
+                  {description ? (
+                    <motion.p
+                      variants={textVariants}
+                      initial="initial"
+                      animate="animate"
+                      exit="exit"
+                      transition={textTransition}
+                    >
+                      {description}
+                    </motion.p>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 <div className="social-links">
                   <SocialLink href={github} className="fab fa-github" />
@@ -162,15 +162,40 @@ export default function HeroStarted({ aboutLoading }) {
               <div className="info-list">
                 <ul>
                   <li>
-                    <span className="num">
-                      {year_of_experience} <strong>+</strong>
-                    </span>
+                    {year_of_experience ? (
+                      <motion.span
+                        variants={textVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={textTransition}
+                        className="num"
+                      >
+                        {year_of_experience}
+                        <strong>+</strong>
+                      </motion.span>
+                    ) : (
+                      <span className="num"> </span>
+                    )}
                     <span className="value">
                       Years of <strong>Experience</strong>
                     </span>
                   </li>
                   <li>
-                    <span className="num">{complete_projects}</span>
+                    {complete_projects ? (
+                      <motion.span
+                        variants={textVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={textTransition}
+                        className="num"
+                      >
+                        {complete_projects}
+                      </motion.span>
+                    ) : (
+                      <span className="num"> </span>
+                    )}
                     <span className="value">
                       Completed <strong>Projects</strong>
                     </span>
