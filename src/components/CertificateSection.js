@@ -89,13 +89,14 @@ export default function CertificateSection({ noViewMore }) {
                       </Link>
                     </div>
                   </div>
-                  {/* TODO: DETAIL CERTIFICATE */}
-                  <a
+                  <motion.a
                     href={`/certificate-single/${certificate.slug}`}
                     className="btn btn-solid"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.1, ease: "easeInOut" }}
                   >
                     <span>See My Qualifications</span>
-                  </a>
+                  </motion.a>
                   <div
                     className="bg-img"
                     style={{
