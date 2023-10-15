@@ -73,17 +73,6 @@ class MyDocument extends Document {
             type="text/css"
             media="all"
           />
-          {/* Favicon */}
-          <link
-            rel="shortcut icon"
-            href="/assets/images/favicon/logo-azmi-2.ico"
-            type="image/x-icon"
-          />
-          <link
-            rel="icon"
-            href="/assets/images/favicon/logo-azmi-2.ico"
-            type="image/x-icon"
-          />
         </Head>
         <body>
           <Main />

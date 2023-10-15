@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import PreLoader from "../src/layouts/PreLoader";
 import "../styles/globals.css";
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from "framer-motion";
 
 const App = ({ Component, pageProps }) => {
   const [loader, setLoader] = useState(true);
@@ -44,9 +44,12 @@ const App = ({ Component, pageProps }) => {
           content="Explore the portfolio of Moch Azmi Iskandar and discover his extensive experience in web development using modern technologies."
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:site_name"
-          content="Moch Azmi Iskandar Portfolio"
+        <meta property="og:site_name" content="Moch Azmi Iskandar Portfolio" />
+        {/* Favicon */}
+        <link
+          rel="icon"
+          href="/assets/images/favicon/logo-azmi-2.ico"
+          type="image/x-icon"
         />
       </Head>
       {loader && <PreLoader />}
