@@ -133,9 +133,12 @@ export default function HeroStarted({ aboutLoading }) {
               <Image
                 src="/assets/images/profile/profile-azmi.png"
                 alt="<b>Moch Azmi</b> Iskandar"
-                width={700}
-                height={800}
+                width={0}
+                height={0}
                 quality={100}
+                priority={true}
+                sizes="100vw"
+                style={{ width: "1000px", height: "800px" }}
               />
               <span className="circle circle-1" />
               <Image

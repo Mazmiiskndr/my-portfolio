@@ -37,10 +37,14 @@ const Header = () => {
                 <Link href="/" legacyBehavior>
                   <a>
                     <Image
-                      width={60}
-                      height={38}
+                      width={0}
+                      height={0}
                       src="/assets/images/favicon/logo-azmi-2.png"
                       alt="Logo"
+                      priority={true}
+                      quality={100}
+                      sizes="100vw"
+                      style={{ width: "100%", height: "auto" }}
                     />
                   </a>
                 </Link>

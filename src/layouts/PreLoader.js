@@ -11,9 +11,12 @@ const PreLoader = () => {
               <Image
                 src="/assets/images/logo-azmi.png"
                 alt="Moch Azmi Iskandar - Personal Portfolio"
-                width={300}
-                height={30}
+                height={0}
+                width={0}
                 quality={100}
+                priority={true}
+                sizes="100vw"
+                style={{ width: "100%", height: "auto" }}
               />
               <div className="spinner-dot" />
               <div className="spinner spinner-line" />
