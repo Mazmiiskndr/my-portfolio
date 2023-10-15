@@ -17,8 +17,7 @@ const CertificateSingle = ({ slug }) => {
   const [certificateData] = useFetchCertificateBySlug(slug);
   const { title, subtitle, image, link, description, created_at } =
     certificateData || {};
-  if (!title || !subtitle)
-    return <div className="text-center">Loading..</div>;
+  if (!title || !subtitle) return <div className="text-center">Loading..</div>;
 
   return (
     <Layout pageClassName={"portfolio-template dark-skin"}>

@@ -4,6 +4,7 @@ import { linkClick, toggleMenu } from "../utils";
 import { useAboutData } from "@context/AboutDataContext";
 import SocialLink from "@components/SocialLink";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const Header = () => {
   const aboutData = useAboutData();
@@ -35,11 +36,11 @@ const Header = () => {
               <div className="logo">
                 <Link href="/" legacyBehavior>
                   <a>
-                    <img
+                    <Image
                       width={60}
                       height={38}
                       src="/assets/images/favicon/logo-azmi-2.png"
-                      alt=""
+                      alt="Logo"
                     />
                   </a>
                 </Link>
@@ -202,16 +203,6 @@ const Header = () => {
                                   display: `${pageToggle ? "block" : "none"}`,
                                 }}
                               >
-                                {/* <li className="menu-item">
-                                  <Link legacyBehavior href="/works-list">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Works (List)
-                                    </a>
-                                  </Link>
-                                </li> */}
                                 <li className="menu-item">
                                   <Link legacyBehavior href="/works">
                                     <a
@@ -232,36 +223,6 @@ const Header = () => {
                                     </a>
                                   </Link>
                                 </li>
-                                {/* <li className="menu-item">
-                                  <Link legacyBehavior href="/work-single">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Work Single Page
-                                    </a>
-                                  </Link>
-                                </li>
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/blog">
-                                    <a
-                                      className=" splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Blog
-                                    </a>
-                                  </Link>
-                                </li>
-                                <li className="menu-item">
-                                  <Link legacyBehavior href="/blog-single">
-                                    <a
-                                      className="splitting-text-anim-1"
-                                      data-splitting="chars"
-                                    >
-                                      Single Post
-                                    </a>
-                                  </Link>
-                                </li> */}
                               </ul>
                             </li>
                           </ul>

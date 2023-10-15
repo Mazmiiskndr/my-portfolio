@@ -3,6 +3,7 @@ import Link from "next/link";
 import { truncateText, truncateHtmlText } from "../utils";
 const ASSETS_PATH = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 /**
  * Renders the portfolios with loading and no data handling
@@ -82,11 +83,12 @@ export const RenderPortfolios = ({ portfoliosData, portfoliosLoading }) => {
               </a>
             </Link>
           </div>
-          <img
+          <Image
             className="bg-img"
-            src="assets/images/pat-2.png"
+            src="/assets/images/pat-2.png"
             alt="Pat 2"
-            loading="lazy"
+            width={500}
+            height={500}
           />
         </div>
       </div>

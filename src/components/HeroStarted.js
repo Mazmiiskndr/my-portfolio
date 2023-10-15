@@ -1,6 +1,7 @@
 import { useAboutData } from "@context/AboutDataContext";
 import SocialLink from "./SocialLink";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 75 },
@@ -10,12 +11,11 @@ const containerVariants = {
 const textVariants = {
   initial: { y: -50, opacity: 0 },
   animate: { y: 0, opacity: 1 },
-  exit: { y: 50, opacity: 0 }
+  exit: { y: 50, opacity: 0 },
 };
 
-
 const textTransition = {
-  type: "tween", 
+  type: "tween",
   ease: "easeInOut",
   duration: 1,
 };
@@ -130,34 +130,34 @@ export default function HeroStarted({ aboutLoading }) {
               </div>
             </div>
             <div className="slide" data-animate="active">
-              <motion.img
-                whileHover={{ scale: 1.1 }}
-                loading="lazy"
-                decoding="async"
-                src="assets/images/profile/profile-azmi.png"
+              <Image
+                src="/assets/images/profile/profile-azmi.png"
                 alt="<b>Moch Azmi</b> Iskandar"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                width={700}
+                height={800}
+                quality={100}
               />
               <span className="circle circle-1" />
-              <img
+              <Image
                 className="circle img-1"
-                src="assets/images/pat-1.png"
+                src="/assets/images/pat-1.png"
                 alt="Pat 1"
-                loading="lazy"
+                width={500}
+                height={500}
               />
-              <img
+              <Image
                 className="circle img-2"
-                src="assets/images/pat-2.png"
+                src="/assets/images/pat-2.png"
                 alt="Pat 2"
-                loading="lazy"
+                width={500}
+                height={500}
               />
-              <img
+              <Image
                 className="circle img-3"
-                src="assets/images/pat-2.png"
+                src="/assets/images/pat-2.png"
                 alt="Pat 3"
-                loading="lazy"
+                width={500}
+                height={500}
               />
               <div className="info-list">
                 <ul>

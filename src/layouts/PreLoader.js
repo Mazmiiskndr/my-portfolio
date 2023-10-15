@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Fragment } from "react";
 const PreLoader = () => {
   return (
@@ -7,10 +8,12 @@ const PreLoader = () => {
         <div className="centrize full-width">
           <div className="vertical-center">
             <div className="spinner-logo">
-              <img
-                loading="lazy"
+              <Image
                 src="/assets/images/logo-azmi.png"
                 alt="Moch Azmi Iskandar - Personal Portfolio"
+                width={300}
+                height={30}
+                quality={100}
               />
               <div className="spinner-dot" />
               <div className="spinner spinner-line" />

@@ -1,4 +1,5 @@
 import Isotope from "isotope-layout";
+import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useEffect, useRef, useState } from "react";
 const PortfolioIsotopeList = ({ noViewMore }) => {
@@ -91,11 +92,11 @@ const PortfolioIsotopeList = ({ noViewMore }) => {
                 <div className="img">
                   <Link legacyBehavior href="/work-single">
                     <a>
-                      <img
-                        loading="lazy"
-                        decoding="async"
-                        src="assets/images/work4.jpeg"
+                      <Image
+                        src="/assets/images/work4.jpeg"
                         alt="Zorro"
+                        width={500}
+                        height={500}
                       />
                       <span className="overlay" />
                     </a>
