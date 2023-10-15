@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { linkClick, toggleMenu } from "../utils";
 import { useAboutData } from "@context/AboutDataContext";
 import SocialLink from "@components/SocialLink";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const aboutData = useAboutData();
@@ -11,6 +12,7 @@ const Header = () => {
     aboutData[0] || {};
 
   const [day, setDay] = useState(true);
+  const [rotate, setRotate] = useState(0);
   useEffect(() => {
     if (day) {
       document.querySelector("body").classList.add("dark-skin");
@@ -51,9 +53,14 @@ const Header = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   setDay(!day);
+                  setRotate(rotate + 180);
                 }}
               >
-                <span className="sw-after">
+                <motion.span
+                  className="sw-after"
+                  animate={{ rotate: rotate + 180 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width={23}
@@ -68,8 +75,12 @@ const Header = () => {
                       transform="translate(-1737 -98)"
                     />
                   </svg>
-                </span>
-                <span className="sw-before">
+                </motion.span>
+                <motion.span
+                  className="sw-before"
+                  animate={{ rotate: rotate }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="22.22"
@@ -84,7 +95,7 @@ const Header = () => {
                       transform="translate(-1737.44 -98.313)"
                     />
                   </svg>
-                </span>
+                </motion.span>
               </a>
               {/* menu btn */}
               <a href="#" className="menu-btn" onClick={(e) => toggleMenu(e)}>

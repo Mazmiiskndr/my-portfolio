@@ -14,8 +14,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const fade = {
   initial: { opacity: 0 },
-  in: { opacity: 1, transition: { duration: 1 } }, // durasi animasi masuk dalam detik
-  out: { opacity: 0, transition: { duration: 1 } }, // durasi animasi keluar dalam detik
+  in: { opacity: 1, transition: { duration: 1 } },
+  out: { opacity: 0, transition: { duration: 1 } },
 };
 
 const Layout = ({ children, pageClassName }) => {
